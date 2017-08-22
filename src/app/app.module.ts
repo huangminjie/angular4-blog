@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 
 import 'hammerjs';
 
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
+import { HomeModule } from './home';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
