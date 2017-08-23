@@ -1,0 +1,27 @@
+.login-area{
+    height: 35px;
+    font-size: 12px;
+}
+.login-area>div{
+    position:fixed;
+    height: 35px;
+    line-height: 35px;
+}
+.login-area>div:first-child{
+    left: 20px;
+}
+.login-area>div:last-child{
+    right: 20px;
+}
+.sidenav-container {
+    height: calc(100% - 35px);
+}
+.sidenav-content{
+    text-align: center;
+    padding: 20px;
+}
+.sidenav-content>div:last-child{
+    position:fixed;
+    top:20px;
+    right: 20px;
+}
