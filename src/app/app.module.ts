@@ -5,8 +5,9 @@ import 'hammerjs';
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home';
+import { DashboardModule } from './dashboard';
+import { LoginModule } from './login';
 import { CoreModule } from './core';
-import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,11 @@ import { SharedModule } from './shared';
   ],
   imports: [
     BrowserModule,
-    HomeModule,
-    AppRoutingModule,
     CoreModule,
-    SharedModule
+    HomeModule,
+    DashboardModule,
+    LoginModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
