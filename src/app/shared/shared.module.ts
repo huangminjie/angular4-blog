@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import {
     MdSidenavModule,
     MdButtonModule,
-    MdGridListModule
+    MdGridListModule,
+    MdListModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,7 +15,8 @@ import {
         FormsModule,
         MdSidenavModule,
         MdButtonModule,
-        MdGridListModule
+        MdGridListModule,
+        MdListModule
     ],
     declarations: [
 
@@ -25,7 +27,8 @@ import {
         FormsModule,
         MdSidenavModule,
         MdButtonModule,
-        MdGridListModule
+        MdGridListModule,
+        MdListModule
     ]
 })
 export class SharedModule { }

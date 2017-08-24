@@ -1,0 +1,16 @@
+<div class="navside">
+  <a href="javascript:void(0)">
+      <img src="../../../assets/image/avatar.jpg" class="avatar"/>
+  </a>
+  <md-nav-list>
+    <md-list-item *ngFor="let menu of menus">
+      <a md-line href="javascript:void(0)">
+        <button md-icon-button>
+            <i class="material-icons">{{ menu.icon }}</i>
+        </button>
+        {{ menu.name }}
+      </a>
+    </md-list-item>
+  </md-nav-list>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,32 @@
+[
+    {
+        "name": "编程",
+        "icon": "laptop_mac",
+        "path": "/code"
+    },
+    {
+        "name": "阅读",
+        "icon": "book",
+        "path": "/read"
+    },
+    {
+        "name": "摄影",
+        "icon": "photo_camera",
+        "path": "/photo"
+    },
+    {
+        "name": "资源",
+        "icon": "cloud",
+        "path": "/resource"
+    },
+    {
+        "name": "归档",
+        "icon": "archive",
+        "path": "/archive"
+    },
+    {
+        "name": "关于",
+        "icon": "info",
+        "path": "/about"
+    }
+]
