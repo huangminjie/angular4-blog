@@ -6,7 +6,8 @@ import {
     MdSidenavModule,
     MdButtonModule,
     MdGridListModule,
-    MdListModule
+    MdListModule,
+    MdInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -16,7 +17,8 @@ import {
         MdSidenavModule,
         MdButtonModule,
         MdGridListModule,
-        MdListModule
+        MdListModule,
+        MdInputModule
     ],
     declarations: [
 
@@ -28,7 +30,8 @@ import {
         MdSidenavModule,
         MdButtonModule,
         MdGridListModule,
-        MdListModule
+        MdListModule,
+        MdInputModule
     ]
 })
 export class SharedModule { }
