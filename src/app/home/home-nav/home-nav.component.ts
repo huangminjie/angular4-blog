@@ -14,4 +14,5 @@ export class HomeNavComponent implements OnInit {
   ngOnInit() {
     this.menus = <any>menus;
   }
+
 }

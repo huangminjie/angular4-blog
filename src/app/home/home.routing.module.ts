@@ -4,8 +4,12 @@ import { HomeComponent } from './home.component';
 import { HomeNavComponent } from './home-nav';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'home/nav', component: HomeNavComponent }
+    {
+        path: 'home',
+        component: HomeComponent,
+        children: []
+    },
+    { path: 'home/nav', component: HomeNavComponent },
 ];
 
 @NgModule({
