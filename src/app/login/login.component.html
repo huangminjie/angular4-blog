@@ -1,28 +1,22 @@
-<div>
-  <md-grid-list cols='3' rows='1'>
-    <md-grid-tile></md-grid-tile>
-    <md-grid-tile>
-      <form [formGroup]='userForm' novalidate>
-        <div>
-          <h3>
-            后台登录
-          </h3>
-        </div>
-        <div>
-          <md-input-container>
-            <input mdInput placeholder="用户名" formControlName="username">
-          </md-input-container>
-        </div>
-        <div>
-          <md-input-container>
-            <input mdInput placeholder="密码" formControlName="password">
-          </md-input-container>
-        </div>
-        <div>
-          <a md-raised-button>Raised button</a>
-        </div>
-      </form>
-    </md-grid-tile>
-    <md-grid-tile></md-grid-tile>
-  </md-grid-list>
+<div class="container">
+  <div class="row" #formContainerElem>
+    <form [formGroup]='userForm' novalidate>
+      <h3 class="col-md-4 col-md-offset-4">
+        后台登录
+      </h3>
+      <div class="col-md-4 col-md-offset-4">
+        <md-input-container>
+          <input mdInput placeholder="用户名" formControlName="username">
+        </md-input-container>
+      </div>
+      <div class="col-md-4 col-md-offset-4">
+        <md-input-container>
+          <input mdInput placeholder="密码" formControlName="password">
+        </md-input-container>
+      </div>
+      <div class="col-md-4 col-md-offset-4">
+        <a md-raised-button>Raised button</a>
+      </div>
+    </form>
+  </div>
 </div>
