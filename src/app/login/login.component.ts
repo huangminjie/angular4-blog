@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('formContainerElem') elem: ElementRef;
   userForm: FormGroup;
   constructor(private fb: FormBuilder) { }
 
@@ -15,6 +16,6 @@ export class LoginComponent implements OnInit {
       username: ['123', Validators.required],
       password: ['456', Validators.required]
     });
+    $(this.elem.nativeElement).animateCss("zoomIn");
   }
-
 }
