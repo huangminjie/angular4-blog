@@ -9,13 +9,17 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
   @ViewChild('formContainerElem') elem: ElementRef;
   userForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
-    this.userForm = this.fb.group({
-      username: ['123', Validators.required],
-      password: ['456', Validators.required]
-    });
-    $(this.elem.nativeElement).animateCss("zoomIn");
+    $(this.elem.nativeElement).animateCss("bounceInDown");
+  }
+  onSubmit() {
+
   }
 }
