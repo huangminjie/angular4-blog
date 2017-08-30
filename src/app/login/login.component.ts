@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,9 +6,11 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  @ViewChild('formContainerElem') elem: ElementRef;
+export class LoginComponent implements OnInit, OnDestroy {
+  @ViewChild('bgContainerElem') bgContainerElem: ElementRef;
+  @ViewChild('formContainerElem') formContainerElem: ElementRef;
   userForm: FormGroup;
+  intervalID: any;
   constructor(private fb: FormBuilder) {
     this.userForm = this.fb.group({
       username: ['', Validators.required],
@@ -17,7 +19,33 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(this.elem.nativeElement).animateCss("bounceInDown");
+    let imgs = $(this.bgContainerElem.nativeElement).children();
+    let cur_img = imgs.length - 1;
+    setInterval(() => {
+      cur_img = this.turnImgs(imgs, cur_img);
+    }, 4000);
+    $(this.formContainerElem.nativeElement).animateCss("bounceInDown");
+  }
+  turnImgs(imgs, cur_img) {
+    if (cur_img == 0) {
+      this.fadeOut(imgs[cur_img]);
+      cur_img = imgs.length - 1;
+      this.fadeIn(imgs[cur_img]);
+    } else {
+      this.fadeOut(imgs[cur_img]);
+      this.fadeIn(imgs[cur_img - 1]);
+      cur_img--;
+    }
+    return cur_img;
+  }
+  fadeIn(e) {
+    e.className = "bg fadein"
+  };
+  fadeOut(e) {
+    e.className = "bg fadeout"
+  };
+  ngOnDestroy() {
+    window.clearInterval(this.intervalID);
   }
   onSubmit() {
 
