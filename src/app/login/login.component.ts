@@ -1,17 +1,19 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('bgContainerElem') bgContainerElem: ElementRef;
   @ViewChild('formContainerElem') formContainerElem: ElementRef;
   userForm: FormGroup;
   intervalID: any;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private srv: LoginService) {
     this.userForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -48,6 +50,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     window.clearInterval(this.intervalID);
   }
   onSubmit() {
-
+    this.srv.login(this.userForm.value);
   }
 }
