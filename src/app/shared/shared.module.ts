@@ -7,7 +7,8 @@ import {
     MdButtonModule,
     MdGridListModule,
     MdListModule,
-    MdInputModule
+    MdInputModule,
+    MdProgressBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
         MdButtonModule,
         MdGridListModule,
         MdListModule,
-        MdInputModule
+        MdInputModule,
+        MdProgressBarModule
     ],
     declarations: [
 
@@ -31,7 +33,8 @@ import {
         MdButtonModule,
         MdGridListModule,
         MdListModule,
-        MdInputModule
+        MdInputModule,
+        MdProgressBarModule
     ]
 })
 export class SharedModule { }
