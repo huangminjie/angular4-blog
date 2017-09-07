@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   intervalID: any;
   constructor(private fb: FormBuilder, private srv: LoginService) {
     this.userForm = this.fb.group({
-      username: ['', Validators.required],
+      user_name: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
