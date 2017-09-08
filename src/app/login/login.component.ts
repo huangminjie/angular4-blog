@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
+import { SnackbarService } from '../shared/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('formContainerElem') formContainerElem: ElementRef;
   userForm: FormGroup;
   intervalID: any;
-  constructor(private fb: FormBuilder, private srv: LoginService) {
+  constructor(private fb: FormBuilder, private srv: LoginService, private snackBarServer: SnackbarService) {
     this.userForm = this.fb.group({
       user_name: ['', Validators.required],
       password: ['', Validators.required]
@@ -50,6 +51,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     window.clearInterval(this.intervalID);
   }
   onSubmit() {
-    this.srv.login(this.userForm.value);
+    this.srv.login(this.userForm.value).then((res: any) => {
+      if (res.ok) {
+        this.snackBarServer.success(res.data);
+      }
+      else {
+        this.snackBarServer.error(res.data);
+      }
+    });
   }
 }

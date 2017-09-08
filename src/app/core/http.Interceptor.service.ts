@@ -10,10 +10,12 @@ import {
 } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import { environment } from "../../environments/environment";
+import { ResponseModel } from '../shared/models/response.model';
+import { LoaderService } from './loader/loader.service';
 
 @Injectable()
 export class InterceptedHttp extends Http {
-    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
+    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private loaderService: LoaderService) {
         super(backend, defaultOptions);
     }
 
@@ -34,17 +36,48 @@ export class InterceptedHttp extends Http {
 
     post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
         url = this.updateUrl(url);
-        return super.post(url, body, this.getRequestOptionArgs(options));
+        this.beforeRequest();
+        return super.post(url, body, this.getRequestOptionArgs(options))
+            .catch(this.onCatch)
+            .do((res: Response) => {
+                this.onSuccess(res);
+            }, (err: any) => {
+                this.onError(err);
+            })
+            .map(res => res.json())
+            .finally(() => {
+                this.afterRequest();
+            });
     }
 
     put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
         url = this.updateUrl(url);
-        return super.put(url, body, this.getRequestOptionArgs(options));
+        this.beforeRequest();
+        return super.put(url, body, this.getRequestOptionArgs(options))
+            .catch(this.onCatch)
+            .do((res: Response) => {
+                this.onSuccess(res);
+            }, (err: any) => {
+                this.onError(err);
+            })
+            .finally(() => {
+                this.afterRequest();
+            });
     }
 
     delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
         url = this.updateUrl(url);
-        return super.delete(url, this.getRequestOptionArgs(options));
+        this.beforeRequest();
+        return super.delete(url, this.getRequestOptionArgs(options))
+            .catch(this.onCatch)
+            .do((res: Response) => {
+                this.onSuccess(res);
+            }, (err: any) => {
+                this.onError(err);
+            })
+            .finally(() => {
+                this.afterRequest();
+            });
     }
 
     private updateUrl(url: string) {
@@ -64,22 +97,22 @@ export class InterceptedHttp extends Http {
     }
 
     private beforeRequest(): void {
-        console.log("beforeRequest");
+        this.loaderService.show();
     }
 
     private afterRequest(): void {
-        console.log("afterRequest");
+        this.loaderService.hide();
     }
 
     private onCatch(error: any, caught: Observable<any>): Observable<any> {
         return Observable.throw(error);
     }
 
-    private onSuccess(res: Response): void {
-        console.log(res);
+    private onSuccess(res: Response) {
+        //console.log(res);
     }
 
     private onError(res: Response): void {
-        console.log(res);
+        //console.log(res);
     }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import 'hammerjs';
 
@@ -11,7 +11,6 @@ import { HomeModule } from './home';
 import { DashboardModule } from './dashboard';
 import { LoginModule } from './login';
 import { CoreModule } from './core';
-import { HttpFactory } from './core/http.factory';
 
 @NgModule({
   declarations: [
@@ -19,21 +18,15 @@ import { HttpFactory } from './core/http.factory';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
     HttpModule,
+    CoreModule,
     HomeModule,
     DashboardModule,
     LoginModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [
-    {
-      provide: Http,
-      useFactory: HttpFactory,
-      deps: [XHRBackend, RequestOptions]
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

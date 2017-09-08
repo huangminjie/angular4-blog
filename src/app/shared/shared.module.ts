@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SnackbarService } from './snackbar.service';
 
 import {
     MdSidenavModule,
@@ -8,7 +9,8 @@ import {
     MdGridListModule,
     MdListModule,
     MdInputModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,12 +22,15 @@ import {
         MdGridListModule,
         MdListModule,
         MdInputModule,
-        MdProgressBarModule
+        MdProgressBarModule,
+        MdSnackBarModule
     ],
     declarations: [
 
     ],
-    providers: [],
+    providers: [
+        SnackbarService
+    ],
     exports: [
         CommonModule,
         FormsModule,
@@ -34,7 +39,8 @@ import {
         MdGridListModule,
         MdListModule,
         MdInputModule,
-        MdProgressBarModule
+        MdProgressBarModule,
+        MdSnackBarModule
     ]
 })
 export class SharedModule { }

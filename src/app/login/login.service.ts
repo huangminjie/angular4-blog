@@ -6,6 +6,6 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
     constructor(private http: Http) { }
     login(user) {
-        this.http.post('/admin/login', JSON.stringify(user)).toPromise();
+        return this.http.post('/admin/login', JSON.stringify(user)).toPromise();
     }
 }
