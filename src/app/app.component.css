@@ -1,0 +1,11 @@
+.snackbarSuccess{
+    background: #009688 !important;
+}
+
+.snackbarWarning{
+    background: #FDD835 !important;
+}
+
+.snackbarError{
+    background: #E53935 !important;
+}
