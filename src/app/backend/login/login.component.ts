@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { SnackbarService } from '../shared/snackbar.service';
+import { SnackbarService } from '../../shared/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.srv.login(this.userForm.value).then((res: any) => {
       if (res.ok) {
         this.snackBarServer.success(res.data);
+
       }
       else {
         this.snackBarServer.error(res.data);

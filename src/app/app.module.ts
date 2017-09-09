@@ -7,9 +7,9 @@ import 'hammerjs';
 
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './home';
-import { DashboardModule } from './dashboard';
-import { LoginModule } from './login';
+import { HomeModule } from './frontend/home';
+import { DashboardModule } from './backend/dashboard';
+import { LoginModule } from './backend/login';
 import { CoreModule } from './core';
 
 @NgModule({

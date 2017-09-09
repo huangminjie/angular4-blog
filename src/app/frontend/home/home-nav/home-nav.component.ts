@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import * as menus from '../../../assets/menu.json';
+import * as menus from '../../../../assets/menu.json';
 
 @Component({
   selector: 'app-home-nav',
