@@ -11,21 +11,21 @@
 }
 
 #bg1 {
-    background: url('../../assets/image/bg1.jpg') no-repeat;
+    background: url('../../../assets/image/bg1.jpg') no-repeat;
     background-size: cover;
 }
   
 #bg2 {
-    background: url('../../assets/image/bg2.jpg') no-repeat;
+    background: url('../../../assets/image/bg2.jpg') no-repeat;
     background-size: cover;
 }
 #bg3 {
-    background: url('../../assets/image/bg3.jpg') no-repeat;
+    background: url('../../../assets/image/bg3.jpg') no-repeat;
     background-size: cover;
 }
   
 #bg4 {
-    background: url('../../assets/image/bg4.jpg') no-repeat;
+    background: url('../../../assets/image/bg4.jpg') no-repeat;
     background-size: cover;
 }
 .fadein{

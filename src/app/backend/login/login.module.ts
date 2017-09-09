@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from '../shared';
+import { SharedModule } from '../../shared';
 import { LoginRoutingModule } from './login.routing.module';
 import { LoginComponent } from './login.component';
 
