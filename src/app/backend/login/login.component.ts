@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { SnackbarService } from '../../shared/snackbar.service';
 
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('formContainerElem') formContainerElem: ElementRef;
   userForm: FormGroup;
   intervalID: any;
-  constructor(private fb: FormBuilder, private srv: LoginService, private snackBarServer: SnackbarService) {
+  constructor(private router: Router, private fb: FormBuilder, private srv: LoginService, private snackBarServer: SnackbarService) {
     this.userForm = this.fb.group({
       user_name: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     setInterval(() => {
       cur_img = this.turnImgs(imgs, cur_img);
     }, 4000);
+
     $(this.formContainerElem.nativeElement).animateCss("bounceInDown");
   }
   turnImgs(imgs, cur_img) {
@@ -54,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.srv.login(this.userForm.value).then((res: any) => {
       if (res.ok) {
         this.snackBarServer.success(res.data);
-
+        this.router.navigateByUrl('/dasboard');
       }
       else {
         this.snackBarServer.error(res.data);

@@ -43,6 +43,6 @@
 .form-container{
     animation-duration: 1.5s;
     background: hsla(0,0%,100%,.3) border-box;
-    height: 240px;
+    height: 230px;
     border-radius: 10px;
 }
