@@ -1,3 +1,24 @@
-<p>
-  dashboard-nav works!
-</p>
+<div class="nav-container">
+  <div class="avatar-container">
+    <img class="avatar" src="../../../../assets/image/avatar.jpg" />
+    <h4>后台管理</h4>
+  </div>
+  <md-accordion>
+    <md-expansion-panel *ngFor="let menu of menus;index as i" [expanded]="step === i" (opened)="setStep(i)" hideToggle="true">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          {{ menu.name }}
+        </md-panel-title>
+      </md-expansion-panel-header>
+      <div *ngIf="menu.subMenus">
+        <ul>
+          <li *ngFor="let subMenu of menu.subMenus">
+            <button md-button>
+              {{ subMenu.name }}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </md-expansion-panel>
+  </md-accordion>
+</div>

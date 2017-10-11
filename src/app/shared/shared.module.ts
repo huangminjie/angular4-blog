@@ -10,7 +10,9 @@ import {
     MdListModule,
     MdInputModule,
     MdProgressBarModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdExpansionModule,
+    MdToolbarModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +25,9 @@ import {
         MdListModule,
         MdInputModule,
         MdProgressBarModule,
-        MdSnackBarModule
+        MdSnackBarModule,
+        MdExpansionModule,
+        MdToolbarModule
     ],
     declarations: [
 
@@ -40,7 +44,9 @@ import {
         MdListModule,
         MdInputModule,
         MdProgressBarModule,
-        MdSnackBarModule
+        MdSnackBarModule,
+        MdExpansionModule,
+        MdToolbarModule
     ]
 })
 export class SharedModule { }
