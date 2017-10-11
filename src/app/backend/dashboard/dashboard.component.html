@@ -1,3 +1,16 @@
-<div>
-
-</div>
+<md-sidenav-container class="sidenav-container">
+    <md-sidenav #sidenav mode="side" opened="true">
+        <app-dashboard-nav></app-dashboard-nav>
+    </md-sidenav>
+    <div class="sidenav-content">
+        <div class="sidenav-content-toolbar">
+            <i class="material-icons md-36" (click)="sidenav.toggle()">menu</i>
+            <button md-button>
+                <i class="material-icons md-18" (click)="exit()">exit_to_app</i>
+                退出登录
+            </button>
+        </div>
+        <hr />
+    </div>
+    <router-outlet></router-outlet>
+</md-sidenav-container>
