@@ -9,7 +9,8 @@
         "subMenus": [
             {
                 "name": "发表文章",
-                "icon": "laptop_mac"
+                "icon": "laptop_mac",
+                "path": "/dasboard/newblog"
             },
             {
                 "name": "文章管理",

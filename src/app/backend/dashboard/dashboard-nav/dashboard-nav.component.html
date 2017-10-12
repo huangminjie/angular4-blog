@@ -13,7 +13,7 @@
       <div *ngIf="menu.subMenus">
         <ul>
           <li *ngFor="let subMenu of menu.subMenus">
-            <button md-button>
+            <button md-button (click)="navigate(subMenu.path)">
               {{ subMenu.name }}
             </button>
           </li>
