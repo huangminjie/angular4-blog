@@ -1,6 +1,6 @@
 <md-sidenav-container class="sidenav-container">
     <md-sidenav #sidenav mode="side" opened="true">
-        <app-dashboard-nav></app-dashboard-nav>
+        <app-dashboard-nav (navigateEvent)="navigate($event)"></app-dashboard-nav>
     </md-sidenav>
     <div class="sidenav-content">
         <div class="sidenav-content-toolbar">
@@ -11,6 +11,6 @@
             </button>
         </div>
         <hr />
+        <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
 </md-sidenav-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import * as menus from '../../../../assets/backend_menu.json';
 
@@ -10,6 +10,7 @@ import * as menus from '../../../../assets/backend_menu.json';
 export class DashboardNavComponent implements OnInit {
   step = 1;
   menus = [];
+  @Output() navigateEvent: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -25,5 +26,9 @@ export class DashboardNavComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+
+  navigate(path) {
+    this.navigateEvent.emit(path);
   }
 }
