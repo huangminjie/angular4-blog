@@ -3,22 +3,22 @@
     <img class="avatar" src="../../../../assets/image/avatar.jpg" />
     <h4>后台管理</h4>
   </div>
-  <md-accordion>
-    <md-expansion-panel *ngFor="let menu of menus;index as i" [expanded]="step === i" (opened)="setStep(i)" hideToggle="true">
-      <md-expansion-panel-header>
-        <md-panel-title>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let menu of menus;index as i" [expanded]="step === i" (opened)="setStep(i)" hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           {{ menu.name }}
-        </md-panel-title>
-      </md-expansion-panel-header>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
       <div *ngIf="menu.subMenus">
         <ul>
           <li *ngFor="let subMenu of menu.subMenus">
-            <button md-button (click)="navigate(subMenu.path)">
+            <button mat-button (click)="navigate(subMenu.path)">
               {{ subMenu.name }}
             </button>
           </li>
         </ul>
       </div>
-    </md-expansion-panel>
-  </md-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
