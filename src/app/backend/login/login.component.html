@@ -13,17 +13,17 @@
             后台登录
           </h3>
           <div>
-            <md-input-container>
-              <input mdInput placeholder="用户名" formControlName="user_name" type="text">
-            </md-input-container>
+            <mat-input-container>
+              <input matInput placeholder="用户名" formControlName="user_name" type="text">
+            </mat-input-container>
           </div>
           <div>
-            <md-input-container>
-              <input mdInput placeholder="密码" formControlName="password" type="password">
-            </md-input-container>
+            <mat-input-container>
+              <input matInput placeholder="密码" formControlName="password" type="password">
+            </mat-input-container>
           </div>
           <div>
-            <button type="submit" [disabled]="!userForm.valid" md-raised-button>登录</button>
+            <button type="submit" [disabled]="!userForm.valid" mat-raised-button>登录</button>
           </div>
         </form>
       </div>

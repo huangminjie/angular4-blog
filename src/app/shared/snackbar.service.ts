@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class SnackbarService {
 
-    constructor(public snackBar: MdSnackBar) { }
+    constructor(public snackBar: MatSnackBar) { }
     autoHide: number = 2000;
     // 成功
     public success(msg) {

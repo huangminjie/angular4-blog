@@ -4,30 +4,30 @@ import { FormsModule } from '@angular/forms';
 import { SnackbarService } from './snackbar.service';
 
 import {
-    MdSidenavModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdListModule,
-    MdInputModule,
-    MdProgressBarModule,
-    MdSnackBarModule,
-    MdExpansionModule,
-    MdToolbarModule
+    MatSidenavModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatListModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatToolbarModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MdSidenavModule,
-        MdButtonModule,
-        MdGridListModule,
-        MdListModule,
-        MdInputModule,
-        MdProgressBarModule,
-        MdSnackBarModule,
-        MdExpansionModule,
-        MdToolbarModule
+        MatSidenavModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatListModule,
+        MatInputModule,
+        MatProgressBarModule,
+        MatSnackBarModule,
+        MatExpansionModule,
+        MatToolbarModule
     ],
     declarations: [
 
@@ -38,15 +38,15 @@ import {
     exports: [
         CommonModule,
         FormsModule,
-        MdSidenavModule,
-        MdButtonModule,
-        MdGridListModule,
-        MdListModule,
-        MdInputModule,
-        MdProgressBarModule,
-        MdSnackBarModule,
-        MdExpansionModule,
-        MdToolbarModule
+        MatSidenavModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatListModule,
+        MatInputModule,
+        MatProgressBarModule,
+        MatSnackBarModule,
+        MatExpansionModule,
+        MatToolbarModule
     ]
 })
 export class SharedModule { }
