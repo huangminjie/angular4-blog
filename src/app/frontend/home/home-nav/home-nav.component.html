@@ -1,16 +1,16 @@
 <div class="navside">
   <a href="javascript:void(0)">
-      <img src="../../../assets/image/avatar.jpg" class="avatar"/>
+    <img src="../../../assets/image/avatar.jpg" class="avatar" />
   </a>
-  <md-nav-list>
-    <md-list-item *ngFor="let menu of menus">
-      <a md-line href="javascript:void(0)">
-        <button md-icon-button>
-            <i class="material-icons">{{ menu.icon }}</i>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let menu of menus">
+      <a mat-line href="javascript:void(0)">
+        <button mat-icon-button>
+          <i class="material-icons">{{ menu.icon }}</i>
         </button>
         {{ menu.name }}
       </a>
-    </md-list-item>
-  </md-nav-list>
+    </mat-list-item>
+  </mat-nav-list>
 
 </div>
