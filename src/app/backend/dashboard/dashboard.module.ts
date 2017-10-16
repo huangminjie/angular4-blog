@@ -6,8 +6,6 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardNavComponent } from './dashboard-nav';
 import { DashboardRoutingModule } from './dashboard.routing.module';
 
-import { NewBlogComponent } from '../newblog/newblog.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -16,8 +14,7 @@ import { NewBlogComponent } from '../newblog/newblog.component';
   ],
   declarations: [
     DashboardComponent,
-    DashboardNavComponent,
-    NewBlogComponent
+    DashboardNavComponent
   ]
 })
 export class DashboardModule { }
