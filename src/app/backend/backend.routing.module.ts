@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from '../shared/auth-guard.service';
+
 import { BackendComponent } from './backend.component';
 import { DashboardComponent } from './dashboard';
 import { LoginComponent } from './login';
@@ -10,7 +12,11 @@ const routes: Routes = [
     {
         path: '',
         component: BackendComponent,
+        canActivate: [AuthGuard],
         children: [
+            {
+                path: '', pathMatch: 'full', redirectTo: '/backend/login'
+            },
             {
                 path: 'dashboard', component: DashboardComponent
             },
