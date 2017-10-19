@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import * as menus from '../../../../assets/backend_menu.json';
+import * as menus from '../../../assets/backend_menu.json';
 
 @Component({
-  selector: 'app-dashboard-nav',
-  templateUrl: './dashboard-nav.component.html',
-  styleUrls: ['./dashboard-nav.component.css']
+  selector: 'app-backend-nav',
+  templateUrl: './backend-nav.component.html',
+  styleUrls: ['./backend-nav.component.css']
 })
-export class DashboardNavComponent implements OnInit {
+export class BackendNavComponent implements OnInit {
   step = 1;
   menus = [];
   @Output() navigateEvent: EventEmitter<any> = new EventEmitter();
