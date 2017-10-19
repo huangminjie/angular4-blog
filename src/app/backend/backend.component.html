@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened="true">
+        <app-backend-nav (navigateEvent)="navigate($event)"></app-backend-nav>
+    </mat-sidenav>
+    <div class="sidenav-content">
+        <div class="sidenav-content-toolbar">
+            <i class="material-icons md-36" (click)="sidenav.toggle()">menu</i>
+            <button mat-button>
+                <i class="material-icons md-18" (click)="exit()">exit_to_app</i>
+                退出登录
+            </button>
+        </div>
+        <hr />
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

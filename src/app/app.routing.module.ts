@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', pathMatch: 'full', redirectTo: '/frontend/home' },
+    { path: 'frontend', loadChildren: 'app/frontend/frontend.module#FrontendModule' },
+    { path: 'backend', loadChildren: 'app/backend/backend.module#BackendModule' },
 ];
 
 @NgModule({

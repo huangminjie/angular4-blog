@@ -10,7 +10,7 @@
             {
                 "name": "发表文章",
                 "icon": "laptop_mac",
-                "path": "/dasboard/newblog"
+                "path": "/backend/newpost"
             },
             {
                 "name": "文章管理",

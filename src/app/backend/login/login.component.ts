@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.srv.login(this.userForm.value).then((res: any) => {
       if (res.ok) {
         this.snackBarServer.success(res.data);
-        this.router.navigateByUrl('/dasboard');
+        this.router.navigateByUrl('/backend/dashboard');
       }
       else {
         this.snackBarServer.error(res.data);
