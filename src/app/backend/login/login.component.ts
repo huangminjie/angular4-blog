@@ -56,7 +56,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.srv.login(this.userForm.value).then((res: any) => {
       if (res.ok) {
         this.snackBarServer.success(res.data);
-        this.router.navigateByUrl('/backend/dashboard');
+        localStorage.setItem("currentUser", JSON.stringify(this.userForm.value));
+        let url = localStorage.getItem("redirectUrl");
+        if (url) {
+          this.router.navigateByUrl(url);
+        }
+        else {
+          this.router.navigateByUrl('/backend/dashboard');
+        }
       }
       else {
         this.snackBarServer.error(res.data);
