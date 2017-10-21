@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as menus from '../../assets/frontend_menu.json';
+
 @Component({
     selector: 'app-frontend',
     templateUrl: './frontend.component.html',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FrontendComponent implements OnInit {
+    isCollapsed = false;
+    menus = [];
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.menus = <any>menus;
+    }
 }

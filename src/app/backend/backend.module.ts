@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { SharedModule } from '../shared';
 import { BackendComponent } from './backend.component';
 import { BackendRoutingModule } from './backend.routing.module';
-import { BackendNavComponent } from './backend-nav';
 import { LoginComponent } from './login';
 import { DashboardComponent } from './dashboard';
 import { NewPostComponent } from './newpost';
@@ -16,11 +16,11 @@ import { NewPostComponent } from './newpost';
         FormsModule,
         ReactiveFormsModule,
         BackendRoutingModule,
-        SharedModule
+        SharedModule,
+        NgZorroAntdModule
     ],
     declarations: [
         BackendComponent,
-        BackendNavComponent,
         LoginComponent,
         DashboardComponent,
         NewPostComponent

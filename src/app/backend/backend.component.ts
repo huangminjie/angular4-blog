@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import * as menus from '../../assets/backend_menu.json';
+
 @Component({
     selector: 'app-backend',
     templateUrl: './backend.component.html',
@@ -8,12 +10,16 @@ import { Router } from '@angular/router';
 })
 
 export class BackendComponent implements OnInit {
+    isCollapsed = false;
+    menus = [];
     constructor(private router: Router) { }
 
     ngOnInit() {
-
+        this.menus = <any>menus;
     }
+
     navigate(path) {
         this.router.navigate([path]);
     }
+
 }

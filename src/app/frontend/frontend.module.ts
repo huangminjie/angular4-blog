@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { SharedModule } from '../shared';
 import { FrontendComponent } from './frontend.component';
-import { FrontendNavComponent } from './frontend-nav';
 import { HomeComponent } from './home';
 import { FrontendRoutingModule } from './frontend.routing.module';
 
@@ -14,12 +13,12 @@ import { FrontendRoutingModule } from './frontend.routing.module';
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
-        FrontendRoutingModule
+        FrontendRoutingModule,
+        NgZorroAntdModule
     ],
     exports: [],
     declarations: [
         FrontendComponent,
-        FrontendNavComponent,
         HomeComponent
     ],
     providers: [],

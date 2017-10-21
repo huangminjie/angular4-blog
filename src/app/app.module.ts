@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 import 'hammerjs';
 import { CoreModule } from './core';
 import { AppRoutingModule } from './app.routing.module';
@@ -21,7 +21,8 @@ import { FrontendModule } from './frontend';
     FrontendModule,
     BackendModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgZorroAntdModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
