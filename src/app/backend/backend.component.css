@@ -1,11 +1,47 @@
-.sidenav-container {
+.layout{
     height: 100%;
 }
-.sidenav-content{
-    text-align: center;
-    padding: 20px;
+.avatar{
+    width: 60px;
 }
-.sidenav-content-toolbar{
-    display: flex;
-    justify-content: space-between;
+:host ::ng-deep .logo {
+    height: 32px;
+    background: #333;
+    border-radius: 6px;
+    margin: 16px;
+    /* width: 60px;
+    height: 60px;
+    margin: 16px; */
+}
+:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+    display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+    display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .anticon {
+    font-size: 16px;
+    margin-left: 8px;
+}
+.header{
+    background: #fff; 
+    padding: 0px 16px;
+    text-align: right;
+}
+.content{
+    margin:0 16px;
+    height: 100%;
+}
+.content-breadcrumb{
+    margin:12px 0;
+}
+.content-main{
+    padding:24px; 
+    background: #fff; 
+    height: calc( 100% - 42px );
+}
+.footer{
+    text-align: center;
 }
