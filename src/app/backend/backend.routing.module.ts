@@ -15,7 +15,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {
-                path: '', pathMatch: 'full', redirectTo: '/backend/login'
+                path: '', pathMatch: 'full', redirectTo: '/backend/dashboard'
             },
             {
                 path: 'dashboard', component: DashboardComponent
