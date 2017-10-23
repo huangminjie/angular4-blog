@@ -21,5 +21,7 @@ export class BackendComponent implements OnInit {
     navigate(path) {
         this.router.navigate([path]);
     }
+    logout() {
 
+    }
 }
