@@ -17,11 +17,12 @@ export class BackendComponent implements OnInit {
     ngOnInit() {
         this.menus = <any>menus;
     }
-
     navigate(path) {
         this.router.navigate([path]);
     }
     logout() {
-
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("redirectUrl");
+        this.router.navigate(["/backend/login"]);
     }
 }

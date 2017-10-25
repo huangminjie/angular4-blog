@@ -27,10 +27,15 @@
     </nz-sider>
     <nz-layout>
         <nz-header class="header">
-            <button nz-button [nzType]="'default'" (click)="logout()">
-                <i class="anticon anticon-logout"></i>
-                退出登录
-            </button>
+            <nz-popconfirm [nzTitle]="'确定退出？'" (nzOnConfirm)="logout()" [nzPlacement]="'bottomRight'">
+                <a nz-popconfirm>
+                    <button nz-button [nzType]="'default'">
+                        <i class="anticon anticon-logout"></i>
+                        退出登录
+                    </button>
+                </a>
+            </nz-popconfirm>
+
         </nz-header>
         <nz-content class="content">
             <nz-breadcrumb class="content-breadcrumb">

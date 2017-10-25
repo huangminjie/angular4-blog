@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { SnackbarService } from '../../shared/snackbar.service';
+import { MessageService } from '../../shared/message.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('formContainerElem') formContainerElem: ElementRef;
   userForm: FormGroup;
   intervalID: any;
-  constructor(private router: Router, private fb: FormBuilder, private srv: LoginService, private snackBarServer: SnackbarService) {
+  constructor(private router: Router, private fb: FormBuilder, private srv: LoginService, private _message: MessageService) {
     this.userForm = this.fb.group({
       user_name: ['', Validators.required],
       password: ['', Validators.required]
@@ -53,21 +53,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     window.clearInterval(this.intervalID);
   }
   onSubmit() {
-    this.srv.login(this.userForm.value).then((res: any) => {
-      if (res.ok) {
-        this.snackBarServer.success(res.data);
-        localStorage.setItem("currentUser", JSON.stringify(this.userForm.value));
-        let url = localStorage.getItem("redirectUrl");
-        if (url) {
-          this.router.navigateByUrl(url);
+    for (const i in this.userForm.controls) {
+      this.userForm.controls[i].markAsDirty();
+    }
+    if (!this.userForm.invalid) {
+      this.srv.login(this.userForm.value).then((res: any) => {
+        if (res.ok) {
+          this._message.success(res.data);
+          localStorage.setItem("currentUser", JSON.stringify(this.userForm.value));
+          let url = localStorage.getItem("redirectUrl");
+          if (url) {
+            this.router.navigateByUrl(url);
+          }
+          else {
+            this.router.navigateByUrl('/backend/dashboard');
+          }
         }
         else {
-          this.router.navigateByUrl('/backend/dashboard');
+          this._message.error(res.data);
         }
-      }
-      else {
-        this.snackBarServer.error(res.data);
-      }
-    });
+      });
+    }
   }
 }
