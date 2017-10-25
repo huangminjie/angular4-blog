@@ -1,52 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SnackbarService } from './snackbar.service';
-
-import {
-    MatSidenavModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatListModule,
-    MatInputModule,
-    MatProgressBarModule,
-    MatSnackBarModule,
-    MatExpansionModule,
-    MatToolbarModule
-} from '@angular/material';
+import { MessageService } from './message.service';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatGridListModule,
-        MatListModule,
-        MatInputModule,
-        MatProgressBarModule,
-        MatSnackBarModule,
-        MatExpansionModule,
-        MatToolbarModule
     ],
     declarations: [
 
     ],
     providers: [
-        SnackbarService
+        MessageService
     ],
     exports: [
         CommonModule,
-        FormsModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatGridListModule,
-        MatListModule,
-        MatInputModule,
-        MatProgressBarModule,
-        MatSnackBarModule,
-        MatExpansionModule,
-        MatToolbarModule
+        FormsModule
     ]
 })
 export class SharedModule { }
