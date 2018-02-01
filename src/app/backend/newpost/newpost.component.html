@@ -1,0 +1,57 @@
+<div>
+  <form nz-form [formGroup]="postForm" (ngSubmit)="_submitForm()">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
+        <label for="title" nz-form-item-required>标题</label>
+      </div>
+      <div nz-form-control nz-col [nzValidateStatus]="getFormControl('title')" [nzMd]="10" [nzXs]="24">
+        <nz-input [nzSize]="'large'" formControlName="title" [nzId]="'title'"></nz-input>
+        <div nz-form-explain *ngIf="getFormControl('title').dirty&&getFormControl('title').hasError('title')">请输入标题</div>
+      </div>
+      <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
+        <label for="type" nz-form-item-required>分类</label>
+      </div>
+      <div nz-form-control nz-col [nzMd]="10" [nzXs]="24">
+        <nz-select style="width: 120px;" formControlName="type" nzAllowClear>
+          <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option" [nzDisabled]="option.disabled">
+          </nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
+        <label for="digest">摘要</label>
+      </div>
+      <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
+        <nz-input [nzSize]="'large'" [nzType]="'textarea'" [nzRows]="'4'" formControlName="digest" [nzId]="'digest'"></nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
+        <label for="tag">标签</label>
+      </div>
+      <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
+        <nz-input [nzSize]="'tag'" formControlName="tag" [nzId]="'tag'"></nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
+        <label for="text">正文</label>
+      </div>
+      <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
+        <div style="display: flex" id="textContent">
+          <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="14"></textarea>
+          <div>
+            <div>
+              <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
+            </div>
+            <div>
+              <i class="anticon trigger" [class.anticon-shrink]="isFullscreen" [class.anticon-arrows-alt]="!isFullscreen" (click)="fullscreen()"></i>
+            </div>
+          </div>
+          <div style="flex: 1" id="preview"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+[
+    {
+        "name": "网站统计",
+        "icon": "laptop_mac"
+    },
+    {
+        "name": "博客管理",
+        "icon": "laptop_mac",
+        "subMenus": [
+            {
+                "name": "发表文章",
+                "icon": "laptop_mac",
+                "path": "/backend/newpost"
+            },
+            {
+                "name": "文章管理",
+                "icon": "laptop_mac"
+            },
+            {
+                "name": "分类管理",
+                "icon": "laptop_mac"
+            }
+        ]
+    },
+    {
+        "name": "评论管理",
+        "icon": "laptop_mac"
+    },
+    {
+        "name": "缓存管理",
+        "icon": "laptop_mac"
+    },
+    {
+        "name": "系统设置",
+        "icon": "laptop_mac"
+    }
+]
