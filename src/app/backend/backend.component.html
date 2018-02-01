@@ -1,0 +1,51 @@
+<nz-layout class="layout">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed">
+        <div class="logo">
+            <!-- <img src="../../assets/image/avatar.jpg" class="avatar" /> -->
+        </div>
+        <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+            <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
+                <li nz-submenu *ngIf="menu.subMenus && menu.subMenus.length > 0; else elseBlock">
+                    <span title>
+                        <i class="anticon anticon-user"></i>
+                        <span class="nav-text">{{menu.name}}</span>
+                    </span>
+                    <ul>
+                        <li nz-menu-item *ngFor="let subMenu of menu.subMenus" (click)="navigate(subMenu.path)">{{subMenu.name}}</li>
+                    </ul>
+                </li>
+                <ng-template #elseBlock>
+                    <li nz-menu-item (click)="navigate(menu.path)">
+                        <span>
+                            <i class="anticon anticon-file"></i>
+                            <span class="nav-text">{{menu.name}}</span>
+                        </span>
+                    </li>
+                </ng-template>
+            </ng-template>
+        </ul>
+    </nz-sider>
+    <nz-layout>
+        <nz-header class="header">
+            <nz-popconfirm [nzTitle]="'确定退出？'" (nzOnConfirm)="logout()" [nzPlacement]="'bottomRight'">
+                <a nz-popconfirm>
+                    <button nz-button [nzType]="'default'">
+                        <i class="anticon anticon-logout"></i>
+                        退出登录
+                    </button>
+                </a>
+            </nz-popconfirm>
+
+        </nz-header>
+        <nz-content class="content">
+            <nz-breadcrumb class="content-breadcrumb">
+                <nz-breadcrumb-item>User</nz-breadcrumb-item>
+                <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+            </nz-breadcrumb>
+            <div class="content-main">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+        <nz-footer class="footer">Ant Design ©2017 Implement By Angular</nz-footer>
+    </nz-layout>
+</nz-layout>

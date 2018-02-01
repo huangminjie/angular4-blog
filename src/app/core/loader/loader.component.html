@@ -1,7 +1,5 @@
 <div [class.loader-hidden]="!show">
     <div class="loader-overlay">
-        <div>
-            <md-progress-bar mode="indeterminate" color="primary" *ngIf="show"></md-progress-bar>
-        </div>
+        <nz-progress [ngModel]="progress" [nzStrokeWidth]="5"></nz-progress>
     </div>
 </div>

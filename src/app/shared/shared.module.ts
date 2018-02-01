@@ -1,46 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SnackbarService } from './snackbar.service';
-
-import {
-    MdSidenavModule,
-    MdButtonModule,
-    MdGridListModule,
-    MdListModule,
-    MdInputModule,
-    MdProgressBarModule,
-    MdSnackBarModule
-} from '@angular/material';
+import { MessageService } from './message.service';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MdSidenavModule,
-        MdButtonModule,
-        MdGridListModule,
-        MdListModule,
-        MdInputModule,
-        MdProgressBarModule,
-        MdSnackBarModule
     ],
     declarations: [
 
     ],
     providers: [
-        SnackbarService
+        MessageService
     ],
     exports: [
         CommonModule,
-        FormsModule,
-        MdSidenavModule,
-        MdButtonModule,
-        MdGridListModule,
-        MdListModule,
-        MdInputModule,
-        MdProgressBarModule,
-        MdSnackBarModule
+        FormsModule
     ]
 })
 export class SharedModule { }

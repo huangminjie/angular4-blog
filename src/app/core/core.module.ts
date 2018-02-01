@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { SharedModule } from '../shared';
 import { LoaderComponent } from './loader/loader.component';
@@ -11,7 +12,8 @@ import { HttpFactory } from './http.factory';
 @NgModule({
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        NgZorroAntdModule
     ],
     exports: [
         LoaderComponent

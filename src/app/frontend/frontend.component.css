@@ -1,0 +1,43 @@
+.layout{
+    height: 100%;
+}
+:host ::ng-deep .logo {
+    width: 60px;
+    height: 60px;
+    margin: 0px 16px;
+    float: left;
+}
+.avatar{
+    width: 60px;
+}
+.content{
+    padding:0 50px;
+    height: calc(100% - 130px);
+    overflow: auto;
+}
+.content-layout{
+    padding:24px 0; 
+    background: #fff;
+    height: calc(100% - 42px);
+}
+.content-sider{
+    height:100%;
+    overflow:auto;
+}
+.content-main{
+    padding: 0 24px; 
+    min-height: 280px;
+}
+.footer{
+    text-align: center;
+}
+:host ::ng-deep .trigger {
+    font-size: 18px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  :host ::ng-deep .trigger:hover {
+    color: #108ee9;
+  }

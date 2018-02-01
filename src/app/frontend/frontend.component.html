@@ -1,0 +1,29 @@
+<nz-layout class="layout">
+    <nz-header>
+        <div class="logo">
+            <img src="../../assets/image/avatar.jpg" class="avatar" />
+        </div>
+        <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+            <li *ngFor="let menu of menus" nz-menu-item style="font-size: 14px;">{{menu.name}}</li>
+        </ul>
+    </nz-header>
+    <nz-content class="content">
+        <nz-breadcrumb style="margin:12px 0;">
+            <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+            <nz-breadcrumb-item>List</nz-breadcrumb-item>
+            <nz-breadcrumb-item>App</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <nz-layout class="content-layout">
+            <nz-sider [nzWidth]="200" style="background:#fff" [hidden]="isCollapsed">
+                <ul nz-menu [nzMode]="'inline'" class="content-sider">
+                    <li nz-menu-item>1</li>
+                </ul>
+            </nz-sider>
+            <nz-content class="content-main">
+                <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+                <router-outlet></router-outlet>
+            </nz-content>
+        </nz-layout>
+    </nz-content>
+    <nz-footer class="footer">Ant Design ©2017 Implement By Angular</nz-footer>
+</nz-layout>
