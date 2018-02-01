@@ -39,10 +39,16 @@
         <label for="text">正文</label>
       </div>
       <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
-        <div style="display: flex">
-          <nz-input style="flex: 1" [nzSize]="'large'" [nzType]="'textarea'" [nzAutosize]="{ minRows: 20 }" formControlName="text"
-            [nzId]="'text'"></nz-input>
-          <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
+        <div style="display: flex" id="textContent">
+          <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="14"></textarea>
+          <div>
+            <div>
+              <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
+            </div>
+            <div>
+              <i class="anticon trigger" [class.anticon-shrink]="isFullscreen" [class.anticon-arrows-alt]="!isFullscreen" (click)="fullscreen()"></i>
+            </div>
+          </div>
           <div style="flex: 1" id="preview"></div>
         </div>
       </div>
