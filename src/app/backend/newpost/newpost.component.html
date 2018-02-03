@@ -1,5 +1,5 @@
 <div>
-  <form nz-form [formGroup]="postForm" (ngSubmit)="_submitForm()">
+  <form nz-form [formGroup]="postForm">
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
         <label for="title" nz-form-item-required>标题</label>
@@ -36,11 +36,11 @@
     </div>
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzMd]="2" [nzXs]="24">
-        <label for="text">正文</label>
+        <label for="text" nz-form-item-required>正文</label>
       </div>
       <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
         <div style="display: flex" id="textContent">
-          <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="14"></textarea>
+          <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="12"></textarea>
           <div>
             <div>
               <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
@@ -51,6 +51,12 @@
           </div>
           <div style="flex: 1" id="preview"></div>
         </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-control nz-col [nzOffset]="2" [nzMd]="22" [nzXs]="22">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!postForm.valid">Submit</button>
+        <button nz-button [nzSize]="'large'" (click)="resetForm($event)">Reset</button>
       </div>
     </div>
   </form>

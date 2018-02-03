@@ -16,11 +16,7 @@ export class NewPostComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.options = [
-      { value: 'jack', label: 'Jack' },
-      { value: 'lucy', label: 'Lucy' },
-      { value: 'disabled', label: 'Disabled', disabled: true }
-    ];
+    this.options = [];
     this.selectedOption = this.options[0];
 
     this.postForm = this.fb.group({
@@ -74,5 +70,10 @@ export class NewPostComponent implements OnInit {
     else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
     }
+  }
+  resetForm() {
+    this.postForm.reset({
+      text: ""
+    });
   }
 }
