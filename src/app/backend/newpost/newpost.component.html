@@ -55,7 +55,7 @@
     </div>
     <div nz-form-item nz-row>
       <div nz-form-control nz-col [nzOffset]="2" [nzMd]="22" [nzXs]="22">
-        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!postForm.valid">Submit</button>
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!postForm.valid" (click)="submitForm()">Submit</button>
         <button nz-button [nzSize]="'large'" (click)="resetForm($event)">Reset</button>
       </div>
     </div>

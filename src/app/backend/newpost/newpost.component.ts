@@ -1,11 +1,13 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { markdown } from 'markdown'
+import { markdown } from 'markdown';
+import { NewPostService } from './newpost.component.service';
 
 @Component({
   selector: 'app-backend-newpost',
   templateUrl: './newpost.component.html',
-  styleUrls: ['./newpost.component.css']
+  styleUrls: ['./newpost.component.css'],
+  providers: [NewPostService]
 })
 export class NewPostComponent implements OnInit {
   postForm: FormGroup;
@@ -13,12 +15,9 @@ export class NewPostComponent implements OnInit {
   isFullscreen: boolean = false;
   options = [];
   selectedOption;
-  constructor(private fb: FormBuilder) { }
+  constructor(private srv: NewPostService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.options = [];
-    this.selectedOption = this.options[0];
-
     this.postForm = this.fb.group({
       title: ['', [Validators.required]],
       type: ['', [Validators.required]],
@@ -29,6 +28,16 @@ export class NewPostComponent implements OnInit {
     this.postForm.controls['text'].valueChanges.subscribe((data) => {
       $("#preview").html(markdown.toHTML(data));
     });
+
+    this.srv.getTypes().then((resp) => {
+      if (resp.ok) {
+        console.log(resp);
+        //this.selectedOption = this.options[0];
+      }
+      else {
+
+      }
+    })
   }
   getFormControl(name) {
     return this.postForm.controls[name];
@@ -74,6 +83,13 @@ export class NewPostComponent implements OnInit {
   resetForm() {
     this.postForm.reset({
       text: ""
+    });
+  }
+  submitForm() {
+    this.srv.addPost(this.postForm.value).then((resp) => {
+      if (resp.ok) {
+        console.log(resp);
+      }
     });
   }
 }

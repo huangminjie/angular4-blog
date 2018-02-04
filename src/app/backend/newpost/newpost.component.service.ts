@@ -10,4 +10,7 @@ export class NewPostService {
     getTypes() {
         return this.http.get('/types').toPromise();
     }
+    addPost(type) {
+        return this.http.post('/posts', type).toPromise();
+    }
 }
