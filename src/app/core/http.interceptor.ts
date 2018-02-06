@@ -29,7 +29,13 @@ export class MyInterceptor implements HttpInterceptor {
         });
         this.beforeRequest();
         return next.handle(dupReq)
+            .do((res) => {
+                this.onSuccess(res);
+            }, (err: any) => {
+                this.onError(err);
+            })
             .map((res: HttpEvent<any>) => {
+                this.afterRequest();
                 if (res instanceof HttpResponse) {
                     if (res.ok) {
                         return res.body;
@@ -42,13 +48,7 @@ export class MyInterceptor implements HttpInterceptor {
                     }
                 }
             })
-            .do((res) => {
-                this.afterRequest();
-                this.onSuccess(res);
-            }, (err: any) => {
-                this.afterRequest();
-                this.onError(err);
-            })
+
             // .finally(() => {
             //     this.afterRequest();
             // })
