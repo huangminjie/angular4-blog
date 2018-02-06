@@ -9,6 +9,7 @@ import { BackendRoutingModule } from './backend.routing.module';
 import { LoginComponent } from './login';
 import { DashboardComponent } from './dashboard';
 import { NewPostComponent } from './newpost';
+import { TypesMgMtComponent } from './typesmgmt/typesmgmt.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { NewPostComponent } from './newpost';
         BackendComponent,
         LoginComponent,
         DashboardComponent,
-        NewPostComponent
+        NewPostComponent,
+        TypesMgMtComponent
     ],
 })
 export class BackendModule { }

@@ -1,0 +1,90 @@
+<nz-table #nzTable [nzDataSource]="data" [nzIsPagination]="false" [nzShowTitle]="true">
+  <div nz-table-title>
+    <button nz-button (click)="add()">
+      <i class="anticon anticon-plus"></i>
+      New
+    </button>
+  </div>
+  <thead nz-thead>
+    <tr>
+      <th nz-th [nzWidth]="'25%'">
+        <span>分类名</span>
+      </th>
+      <th nz-th [nzWidth]="'15%'">
+        <span>状态</span>
+      </th>
+      <th nz-th [nzWidth]="'40%'">
+        <span>创建时间</span>
+      </th>
+      <th nz-th>
+        <span>action</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+      <td nz-td>
+        <span *ngIf="editRow!==data.key">{{data.name}}</span>
+        <span *ngIf="editRow===data.key">
+          <nz-input [(ngModel)]="tempEditObject[data.key].name"></nz-input>
+        </span>
+      </td>
+      <td nz-td>
+        <span *ngIf="editRow!==data.key">{{data.age}}</span>
+        <span *ngIf="editRow===data.key">
+          <nz-input [(ngModel)]="tempEditObject[data.key].age"></nz-input>
+        </span>
+      </td>
+      <td nz-td>{{data.address}}</td>
+      <td nz-td>
+        <span *ngIf="editRow!==data.key">
+          <a (click)="edit(data)">Edit</a>
+        </span>
+        <span *ngIf="editRow===data.key">
+          <a (click)="save(data)">Save</a>
+          <span nz-table-divider></span>
+          <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancel(data)">
+            <a nz-popconfirm>Cancel</a>
+          </nz-popconfirm>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-modal [nzVisible]="isVisible_addModal" [nzTitle]="'新增分类'" [nzContent]="modalContent" [nzWidth]="300" [nzFooter]="modalFooter"
+  [nzClosable]="false">
+  <ng-template #modalContent>
+    <form nz-form [formGroup]="postForm" [nzType]="'horizontal'">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8">
+          <label>分类名</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="12">
+          <nz-input formControlName="name" [nzPlaceHolder]="'分类名'" [nzSize]="'large'">
+          </nz-input>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8">
+          <label>状态</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="12">
+          <nz-select formControlName="status" [nzSize]="'large'">
+            <nz-option [nzLabel]="'禁用'" [nzValue]="0"></nz-option>
+            <nz-option [nzLabel]="'启用'" [nzValue]="1"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #modalFooter>
+    <div>
+      <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="modalCancel($event)">
+        取 消
+      </button>
+      <button nz-button [disabled]="!postForm.valid" [nzType]="'primary'" [nzSize]="'large'" (click)="modalOk($event)" [nzLoading]="isConfirmLoading">
+        提 交
+      </button>
+    </div>
+  </ng-template>
+</nz-modal>

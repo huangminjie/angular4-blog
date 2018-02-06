@@ -18,7 +18,8 @@
             },
             {
                 "name": "分类管理",
-                "icon": "laptop_mac"
+                "icon": "laptop_mac",
+                "path": "/backend/typesmgmt"
             }
         ]
     },
