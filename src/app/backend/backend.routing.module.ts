@@ -7,6 +7,7 @@ import { BackendComponent } from './backend.component';
 import { DashboardComponent } from './dashboard';
 import { LoginComponent } from './login';
 import { NewPostComponent } from './newpost';
+import { TypesMgMtComponent } from './typesmgmt';
 
 const routes: Routes = [
     {
@@ -22,6 +23,9 @@ const routes: Routes = [
             },
             {
                 path: 'newpost', component: NewPostComponent
+            },
+            {
+                path: 'typesmgmt', component: TypesMgMtComponent
             }
         ]
     },
