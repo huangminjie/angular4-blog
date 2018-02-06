@@ -54,13 +54,13 @@ export class TypesMgMtComponent implements OnInit {
   }
   modalOk() {
     let type = this.postForm.value;
-    this.srv.addType(type).then((resp: any) => {
-      if (resp.ok) {
-        this.isVisible_addModal = false;
-      }
-      else {
+    this.srv.addType(type).then((resp) => {
+      // if (resp.ok) {
+      //   this.isVisible_addModal = false;
+      // }
+      // else {
 
-      }
+      // }
     });
   }
 }
