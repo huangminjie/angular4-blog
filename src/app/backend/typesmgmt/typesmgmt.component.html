@@ -24,26 +24,29 @@
   <tbody nz-tbody>
     <tr nz-tbody-tr *ngFor="let data of nzTable.data">
       <td nz-td>
-        <span *ngIf="editRow!==data.key">{{data.name}}</span>
-        <span *ngIf="editRow===data.key">
-          <nz-input [(ngModel)]="tempEditObject[data.key].name"></nz-input>
+        <span *ngIf="editRow!==data.id">{{data.name}}</span>
+        <span *ngIf="editRow===data.id">
+          <nz-input [(ngModel)]="tempEditObject[data.id].name"></nz-input>
         </span>
       </td>
       <td nz-td>
-        <span *ngIf="editRow!==data.key">{{data.age}}</span>
-        <span *ngIf="editRow===data.key">
-          <nz-input [(ngModel)]="tempEditObject[data.key].age"></nz-input>
+        <span *ngIf="editRow!==data.id">{{data.status === 0?'禁用':'启用'}}</span>
+        <span *ngIf="editRow===data.id">
+          <nz-select [(ngModel)]="tempEditObject[data.id].status" [nzSize]="'large'">
+            <nz-option [nzLabel]="'禁用'" [nzValue]="0"></nz-option>
+            <nz-option [nzLabel]="'启用'" [nzValue]="1"></nz-option>
+          </nz-select>
         </span>
       </td>
-      <td nz-td>{{data.address}}</td>
+      <td nz-td>{{data.create_time}}</td>
       <td nz-td>
-        <span *ngIf="editRow!==data.key">
+        <span *ngIf="editRow!==data.id">
           <a (click)="edit(data)">Edit</a>
         </span>
-        <span *ngIf="editRow===data.key">
+        <span *ngIf="editRow===data.id">
           <a (click)="save(data)">Save</a>
           <span nz-table-divider></span>
-          <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancel(data)">
+          <nz-popconfirm [nzTitle]="'取消修改?'" (nzOnConfirm)="cancel(data)">
             <a nz-popconfirm>Cancel</a>
           </nz-popconfirm>
         </span>

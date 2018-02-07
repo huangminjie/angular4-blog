@@ -12,8 +12,8 @@
         <label for="type" nz-form-item-required>分类</label>
       </div>
       <div nz-form-control nz-col [nzMd]="10" [nzXs]="24">
-        <nz-select style="width: 120px;" formControlName="type" nzAllowClear>
-          <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option" [nzDisabled]="option.disabled">
+        <nz-select style="width: 120px;" formControlName="type">
+          <nz-option *ngFor="let option of options" [nzLabel]="option.name" [nzValue]="option.id">
           </nz-option>
         </nz-select>
       </div>

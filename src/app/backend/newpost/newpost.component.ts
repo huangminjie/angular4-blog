@@ -14,7 +14,6 @@ export class NewPostComponent implements OnInit {
   isCollapsed: boolean = false;
   isFullscreen: boolean = false;
   options = [];
-  selectedOption;
   constructor(private srv: NewPostService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -31,8 +30,12 @@ export class NewPostComponent implements OnInit {
 
     this.srv.getTypes().then((resp) => {
       if (resp.ok) {
-        console.log(resp);
-        //this.selectedOption = this.options[0];
+        if (Array.isArray(resp.data)) {
+          this.options = resp.data;
+          this.postForm.patchValue({
+            type: this.options[0].id
+          });
+        }
       }
       else {
 
