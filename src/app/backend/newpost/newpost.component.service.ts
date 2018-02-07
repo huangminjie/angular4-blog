@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
+import { ResponseModel } from '../../shared/models/response.model';
 
 @Injectable()
 export class NewPostService {
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getTypes() {
-        return this.http.get('/types').toPromise();
+        return this.http.get<ResponseModel>('/types').toPromise();
     }
     addPost(type) {
-        return this.http.post('/posts', type).toPromise();
+        return this.http.post<ResponseModel>('/posts', type).toPromise();
     }
 }

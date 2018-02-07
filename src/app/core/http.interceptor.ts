@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import {
     HttpErrorResponse,
     HttpEvent,
@@ -11,6 +12,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { environment } from "../../environments/environment";
@@ -18,10 +20,11 @@ import { LoaderService } from './loader/loader.service';
 import { HttpHeaders } from '@angular/common/http/src/headers';
 
 @Injectable()
-export class MyInterceptor implements HttpInterceptor {
-    constructor(private loaderService: LoaderService) {
+export class ServiceInterceptor implements HttpInterceptor {
+    constructor(private loaderService: LoaderService, private router: Router) {
 
     }
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const dupReq = req.clone({
             url: this.initUrl(req.url),
@@ -29,16 +32,21 @@ export class MyInterceptor implements HttpInterceptor {
         });
         this.beforeRequest();
         return next.handle(dupReq)
-            .do((res) => {
-                this.onSuccess(res);
+            .do((event: HttpEvent<any>) => {
+                if (event instanceof HttpResponse) {
+
+                }
             }, (err: any) => {
-                this.onError(err);
+                if (err instanceof HttpErrorResponse) {
+                    if (err.status === 401) {
+                        this.router.navigate(['/backend/login']);
+                    }
+                }
             })
             .map((res: HttpEvent<any>) => {
-                this.afterRequest();
                 if (res instanceof HttpResponse) {
                     if (res.ok) {
-                        return res.body;
+                        return res.clone<any>({ body: res.body });
                     }
                     else {
                         return {
@@ -48,14 +56,14 @@ export class MyInterceptor implements HttpInterceptor {
                     }
                 }
             })
-
-            // .finally(() => {
-            //     this.afterRequest();
-            // })
+            .finally(() => {
+                this.afterRequest();
+            })
             .catch((err: any, caught) => {
                 return this.onCatch(err, caught);
             });
     }
+
     private initUrl(url: string) {
         return environment.host + url;
     }
@@ -70,13 +78,5 @@ export class MyInterceptor implements HttpInterceptor {
 
     private onCatch(error: any, caught: Observable<any>): Observable<any> {
         return Observable.throw(error);
-    }
-
-    private onSuccess(res: HttpEvent<any>) {
-        //console.log(res);
-    }
-
-    private onError(res: any): void {
-        //console.log(res);
     }
 }

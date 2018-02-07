@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
+import { ResponseModel } from '../../shared/models/response.model';
 
 @Injectable()
 export class LoginService {
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
     login(user) {
-        return this.http.post('/admin/login', JSON.stringify(user)).toPromise();
+        return this.http.post<ResponseModel>('/admin/login', JSON.stringify(user)).toPromise();
     }
 }
