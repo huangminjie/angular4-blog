@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { markdown } from 'markdown';
 import { NewPostService } from './newpost.component.service';
+import { MessageService } from '../../shared/message.service';
 
 @Component({
   selector: 'app-backend-newpost',
@@ -14,7 +15,7 @@ export class NewPostComponent implements OnInit {
   isCollapsed: boolean = false;
   isFullscreen: boolean = false;
   options = [];
-  constructor(private srv: NewPostService, private fb: FormBuilder) { }
+  constructor(private srv: NewPostService, private fb: FormBuilder, private msg: MessageService) { }
 
   ngOnInit() {
     this.postForm = this.fb.group({
@@ -38,7 +39,7 @@ export class NewPostComponent implements OnInit {
         }
       }
       else {
-
+        this.msg.error(resp.type + resp.data);
       }
     })
   }
@@ -85,7 +86,8 @@ export class NewPostComponent implements OnInit {
   }
   resetForm() {
     this.postForm.reset({
-      text: ""
+      text: "",
+      type: this.options[0].id
     });
   }
   submitForm() {
