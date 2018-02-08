@@ -5,13 +5,13 @@
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
             <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
-                <li nz-submenu *ngIf="menu.subMenus && menu.subMenus.length > 0; else elseBlock">
+                <li nz-submenu [nzOpen]="menu.open" *ngIf="menu.subMenus && menu.subMenus.length > 0; else elseBlock">
                     <span title>
                         <i class="anticon anticon-user"></i>
                         <span class="nav-text">{{menu.name}}</span>
                     </span>
                     <ul>
-                        <li nz-menu-item *ngFor="let subMenu of menu.subMenus" (click)="navigate(subMenu.path)">{{subMenu.name}}</li>
+                        <li nz-menu-item [nzSelected]="subMenu.selected" *ngFor="let subMenu of menu.subMenus" (click)="navigate(subMenu.path)">{{subMenu.name}}</li>
                     </ul>
                 </li>
                 <ng-template #elseBlock>
