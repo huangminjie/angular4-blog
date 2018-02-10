@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard';
 import { LoginComponent } from './login';
 import { NewPostComponent } from './newpost';
 import { TypesMgMtComponent } from './typesmgmt';
+import { PostsMgMtComponent } from './postsmgmt';
 
 const routes: Routes = [
     {
@@ -19,13 +20,20 @@ const routes: Routes = [
                 path: '', pathMatch: 'full', redirectTo: '/backend/dashboard'
             },
             {
-                path: 'dashboard', component: DashboardComponent
+                path: 'dashboard',
+                component: DashboardComponent
             },
             {
-                path: 'newpost', component: NewPostComponent
+                path: 'newpost',
+                component: NewPostComponent
             },
             {
-                path: 'typesmgmt', component: TypesMgMtComponent
+                path: 'typesmgmt',
+                component: TypesMgMtComponent
+            },
+            {
+                path: 'postsmgmt',
+                component: PostsMgMtComponent
             }
         ]
     },

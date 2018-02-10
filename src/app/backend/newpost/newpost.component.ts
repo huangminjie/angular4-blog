@@ -93,7 +93,11 @@ export class NewPostComponent implements OnInit {
   submitForm() {
     this.srv.addPost(this.postForm.value).then((resp) => {
       if (resp.ok) {
-        console.log(resp);
+        this.msg.success(resp.data);
+        this.resetForm();
+      }
+      else {
+        this.msg.error(resp.type + resp.data);
       }
     });
   }
