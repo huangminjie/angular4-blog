@@ -14,7 +14,8 @@
             },
             {
                 "name": "文章管理",
-                "icon": "laptop_mac"
+                "icon": "laptop_mac",
+                "path": "/backend/postsmgmt"
             },
             {
                 "name": "分类管理",

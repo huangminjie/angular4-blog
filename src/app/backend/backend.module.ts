@@ -10,6 +10,7 @@ import { LoginComponent } from './login';
 import { DashboardComponent } from './dashboard';
 import { NewPostComponent } from './newpost';
 import { TypesMgMtComponent } from './typesmgmt/typesmgmt.component';
+import { PostsMgMtComponent } from './postsmgmt/postsmgmt.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { TypesMgMtComponent } from './typesmgmt/typesmgmt.component';
         LoginComponent,
         DashboardComponent,
         NewPostComponent,
-        TypesMgMtComponent
+        TypesMgMtComponent,
+        PostsMgMtComponent
     ],
 })
 export class BackendModule { }
