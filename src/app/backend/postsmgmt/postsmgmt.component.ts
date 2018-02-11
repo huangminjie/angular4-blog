@@ -6,7 +6,8 @@ import { MessageService } from '../../shared/message.service';
 @Component({
   selector: 'app-backend-postsmgmt',
   templateUrl: './postsmgmt.component.html',
-  styleUrls: ['./postsmgmt.component.css']
+  styleUrls: ['./postsmgmt.component.css'],
+  providers: [PostsMgMtService]
 })
 export class PostsMgMtComponent implements OnInit {
   pager: Pager = new Pager();
@@ -15,7 +16,7 @@ export class PostsMgMtComponent implements OnInit {
   constructor(private srv: PostsMgMtService, private msg: MessageService) { }
 
   ngOnInit() {
-
+    this.refreshData();
   }
   refreshData(reset = false) {
     if (reset) {
@@ -30,6 +31,8 @@ export class PostsMgMtComponent implements OnInit {
       else {
         this.msg.error(resp.type + resp.data);
       }
+    }, () => {
+      this.loading = false;
     });
   }
 }

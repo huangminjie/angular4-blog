@@ -8,6 +8,6 @@ export class PostsMgMtService {
 
     constructor(private http: HttpClient) { }
     getPosts(pager) {
-        return this.http.get<ResponseModel>('');
+        return this.http.get<ResponseModel>('/posts');
     }
 }
