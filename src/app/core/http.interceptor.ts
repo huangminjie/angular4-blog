@@ -18,10 +18,11 @@ import 'rxjs/add/observable/throw';
 import { environment } from "../../environments/environment";
 import { LoaderService } from './loader/loader.service';
 import { HttpHeaders } from '@angular/common/http/src/headers';
+import { MessageService } from '../shared/message.service';
 
 @Injectable()
 export class ServiceInterceptor implements HttpInterceptor {
-    constructor(private loaderService: LoaderService, private router: Router) {
+    constructor(private loaderService: LoaderService, private router: Router, private msg: MessageService) {
 
     }
 
@@ -49,7 +50,7 @@ export class ServiceInterceptor implements HttpInterceptor {
                         return res.clone<any>({ body: res.body });
                     }
                     else {
-                        return {
+                        return <any>{
                             ok: false,
                             data: "请求发生异常，请刷新页面！"
                         };
@@ -76,7 +77,11 @@ export class ServiceInterceptor implements HttpInterceptor {
         this.loaderService.hide();
     }
 
-    private onCatch(error: any, caught: Observable<any>): Observable<any> {
-        return Observable.throw(error);
+    private onCatch(err: any, caught: Observable<any>): Observable<any> {
+        let error = err.error
+        if (error) {
+            this.msg.error(`${error.type}:${error.data}`);
+        }
+        return Observable.throw(err);
     }
 }
