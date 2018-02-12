@@ -14,11 +14,11 @@ export class TypesMgMtComponent implements OnInit {
   tempEditObject = {};
   data = [];
   isVisible_addModal = false;
-  postForm: FormGroup;
+  typeForm: FormGroup;
   constructor(private srv: TypesMgMtService, private fb: FormBuilder, private msg: MessageService) { }
 
   ngOnInit() {
-    this.postForm = this.fb.group({
+    this.typeForm = this.fb.group({
       name: ['', Validators.required],
       status: [1]
     });
@@ -65,13 +65,13 @@ export class TypesMgMtComponent implements OnInit {
 
   modalCancel() {
     this.isVisible_addModal = false;
-    this.postForm.reset({
+    this.typeForm.reset({
       status: [1]
     });
   }
 
   modalOk() {
-    let type = this.postForm.value;
+    let type = this.typeForm.value;
     this.srv.addType(type).subscribe(resp => {
       if (resp.ok) {
         this.msg.success(resp.data);

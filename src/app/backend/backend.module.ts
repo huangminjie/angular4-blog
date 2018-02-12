@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard';
 import { NewPostComponent } from './newpost';
 import { TypesMgMtComponent } from './typesmgmt/typesmgmt.component';
 import { PostsMgMtComponent } from './postsmgmt/postsmgmt.component';
+import { PostComponent } from './shared/post';
 
 @NgModule({
     imports: [
@@ -27,7 +28,11 @@ import { PostsMgMtComponent } from './postsmgmt/postsmgmt.component';
         DashboardComponent,
         NewPostComponent,
         TypesMgMtComponent,
-        PostsMgMtComponent
+        PostsMgMtComponent,
+        PostComponent
     ],
+    entryComponents: [
+        PostComponent
+    ]
 })
 export class BackendModule { }

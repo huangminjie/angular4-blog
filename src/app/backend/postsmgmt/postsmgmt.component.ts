@@ -13,9 +13,13 @@ export class PostsMgMtComponent implements OnInit {
   pager: Pager = new Pager();
   dataSet = [];
   loading = true;
+  isVisible = false;
+  modalWidth = 0;
+  selectedPost: any;
   constructor(private srv: PostsMgMtService, private msg: MessageService) { }
 
   ngOnInit() {
+    this.modalWidth = $("body").width() - 200;
     this.refreshData();
   }
   refreshData(reset = false) {
@@ -34,5 +38,9 @@ export class PostsMgMtComponent implements OnInit {
     }, () => {
       this.loading = false;
     });
+  }
+  edit(data) {
+    this.selectedPost = data;
+    this.isVisible = true;
   }
 }

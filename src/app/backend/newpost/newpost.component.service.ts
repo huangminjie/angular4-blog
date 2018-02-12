@@ -8,10 +8,4 @@ export class NewPostService {
 
     constructor(private http: HttpClient) { }
 
-    getTypes() {
-        return this.http.get<ResponseModel>('/types').toPromise();
-    }
-    addPost(type) {
-        return this.http.post<ResponseModel>('/posts', type).toPromise();
-    }
 }
