@@ -43,4 +43,9 @@ export class PostsMgMtComponent implements OnInit {
     this.selectedPost = data;
     this.isVisible = true;
   }
+  closeModal() {
+    this.selectedPost = null;
+    this.isVisible = false;
+    this.refreshData();
+  }
 }

@@ -1,4 +1,5 @@
 export class Post {
+    id: string;
     title: string;
     type: string;
     digest: string;
