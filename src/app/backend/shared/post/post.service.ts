@@ -11,7 +11,16 @@ export class PostService {
     getTypes() {
         return this.http.get<ResponseModel>('/types').toPromise();
     }
-    addPost(type) {
-        return this.http.post<ResponseModel>('/posts', type).toPromise();
+    addPost(post) {
+        return this.http.post<ResponseModel>('/posts', post).toPromise();
+    }
+    updatePost(post) {
+        return this.http.patch<ResponseModel>('/posts/' + post.id, JSON.stringify({
+            title: post.title,
+            type: post.type,
+            digest: post.digest,
+            tag: post.tag,
+            text: post.text
+        })).toPromise();
     }
 }

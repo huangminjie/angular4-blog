@@ -42,7 +42,7 @@
 <nz-modal [nzVisible]="isVisible" [nzWidth]="modalWidth" [nzTitle]="'编辑文章'" [nzContent]="modalContent" [nzFooter]="modalFooter"
   (nzOnCancel)="isVisible = false">
   <ng-template #modalContent>
-    <app-backend-shared-post [post]="selectedPost"></app-backend-shared-post>
+    <app-backend-shared-post [post]="selectedPost" (updateSuccess)="closeModal()"></app-backend-shared-post>
   </ng-template>
   <ng-template #modalFooter></ng-template>
 </nz-modal>

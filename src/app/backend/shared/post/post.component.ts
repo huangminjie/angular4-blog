@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { markdown } from 'markdown';
 import { PostService } from './post.service';
@@ -11,32 +11,9 @@ import { Post } from './post.model';
     styleUrls: ['./post.component.css'],
     providers: [PostService]
 })
-export class PostComponent implements OnInit {
-    @Input() set post(value: Post) {
-        if (value) {
-            this.model = value;
-            this.postForm = this.fb.group({
-                title: [value.title, [Validators.required]],
-                type: [value.type, [Validators.required]],
-                digest: [value.digest, [Validators.nullValidator]],
-                tag: [value.tag, [Validators.nullValidator]],
-                text: [value.text, [Validators.required]]
-            });
-        }
-        else {
-            this.postForm = this.fb.group({
-                title: ['', [Validators.required]],
-                type: ['', [Validators.required]],
-                digest: ['', [Validators.nullValidator]],
-                tag: ['', [Validators.nullValidator]],
-                text: ['', [Validators.required]]
-            });
-        }
-        this.postForm.controls['text'].valueChanges.subscribe((data) => {
-            $("#preview").html(markdown.toHTML(data));
-        });
-    }
-    model: Post;
+export class PostComponent implements OnInit, OnChanges {
+    @Input() post: Post;
+    @Output() updateSuccess: EventEmitter<any> = new EventEmitter();
     postForm: FormGroup;
     isCollapsed: boolean = true;
     isFullscreen: boolean = false;
@@ -57,6 +34,31 @@ export class PostComponent implements OnInit {
                 this.msg.error(resp.type + resp.data);
             }
         })
+    }
+    ngOnChanges(changes: SimpleChanges) {
+        let current = changes.post.currentValue;
+        if (current) {
+            this.postForm = this.fb.group({
+                id: [current.id],
+                title: [current.title, [Validators.required]],
+                type: [current.type, [Validators.required]],
+                digest: [current.digest, [Validators.nullValidator]],
+                tag: [current.tag, [Validators.nullValidator]],
+                text: [current.text, [Validators.required]]
+            });
+        }
+        else {
+            this.postForm = this.fb.group({
+                title: ['', [Validators.required]],
+                type: ['', [Validators.required]],
+                digest: ['', [Validators.nullValidator]],
+                tag: ['', [Validators.nullValidator]],
+                text: ['', [Validators.required]]
+            });
+        }
+        this.postForm.controls['text'].valueChanges.subscribe((data) => {
+            $("#preview").html(markdown.toHTML(data));
+        });
     }
     getFormControl(name) {
         return this.postForm.controls[name];
@@ -100,13 +102,14 @@ export class PostComponent implements OnInit {
         }
     }
     resetForm() {
-        if (this.model) {
+        if (this.post) {
             this.postForm.reset({
-                title: this.model.title,
-                digest: this.model.digest,
-                type: this.model.type,
-                tag: this.model.tag,
-                text: this.model.text
+                id: this.post.id,
+                title: this.post.title,
+                digest: this.post.digest,
+                type: this.post.type,
+                tag: this.post.tag,
+                text: this.post.text
             });
         }
         else {
@@ -117,14 +120,27 @@ export class PostComponent implements OnInit {
         }
     }
     submitForm() {
-        this.srv.addPost(this.postForm.value).then((resp) => {
-            if (resp.ok) {
-                this.msg.success(resp.data);
-                this.resetForm();
-            }
-            else {
-                this.msg.error(resp.type + resp.data);
-            }
-        });
+        if (this.post) {
+            this.srv.updatePost(this.postForm.value).then((resp) => {
+                if (resp.ok) {
+                    this.msg.success(resp.data);
+                    this.updateSuccess.emit();
+                }
+                else {
+                    this.msg.error(resp.type + resp.data);
+                }
+            });
+        }
+        else {
+            this.srv.addPost(this.postForm.value).then((resp) => {
+                if (resp.ok) {
+                    this.msg.success(resp.data);
+                    this.resetForm();
+                }
+                else {
+                    this.msg.error(resp.type + resp.data);
+                }
+            });
+        }
     }
 }
