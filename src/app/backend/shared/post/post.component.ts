@@ -33,7 +33,8 @@ export class PostComponent implements OnInit, OnChanges {
             else {
                 this.msg.error(resp.type + resp.data);
             }
-        })
+        });
+
     }
     ngOnChanges(changes: SimpleChanges) {
         let current = changes.post.currentValue;
@@ -57,7 +58,8 @@ export class PostComponent implements OnInit, OnChanges {
             });
         }
         this.postForm.controls['text'].valueChanges.subscribe((data) => {
-            $("#preview").html(markdown.toHTML(data));
+            let html = markdown.toHTML(data, 'Maruku');
+            $("#preview").html(html);
         });
     }
     getFormControl(name) {
