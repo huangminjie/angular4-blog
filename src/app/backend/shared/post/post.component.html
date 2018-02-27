@@ -38,9 +38,10 @@
             <label for="text" nz-form-item-required>正文</label>
         </div>
         <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
-            <div style="display: flex" id="textContent">
-                <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="12"></textarea>
-                <div>
+            <div id="textContent" class="main-content">
+                <textarea id="markdown"></textarea>
+                <!-- <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="12"></textarea> -->
+                <!-- <div>
                     <div>
                         <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
                     </div>
@@ -51,7 +52,7 @@
                         <i class="anticon trigger anticon-info-circle" (click)="info()"></i>
                     </div>
                 </div>
-                <iframe style="flex: 1;display: none" id="preview"></iframe>
+                <iframe style="flex: 1;display: none" id="preview"></iframe> -->
             </div>
         </div>
     </div>
