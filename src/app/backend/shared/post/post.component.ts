@@ -4,6 +4,7 @@ import { markdown } from 'markdown';
 import { PostService } from './post.service';
 import { MessageService } from '../../../shared/message.service';
 import { Post } from './post.model';
+import * as SimpleMDE from 'simplemde';
 
 @Component({
     selector: 'app-backend-shared-post',
@@ -62,21 +63,22 @@ export class PostComponent implements OnInit, OnChanges {
             });
             this.onFormTextChange();
         }
+        var simplemde = new SimpleMDE({ element: $("#markdown")[0] });
     }
     getFormControl(name) {
         return this.postForm.controls[name];
     }
     onFormTextChange() {
-        this.getFormControl('text').valueChanges.subscribe((data) => {
-            let html = markdown.toHTML(data, 'Maruku');
-            let iframe: any = $("#preview").get(0);
-            iframe.src = "javascript:'" + html + "'";
-            var cssLink = document.createElement("link");
-            cssLink.href = "../../../../assets/css/markdown.min.css";
-            cssLink.rel = "stylesheet";
-            cssLink.type = "text/css";
-            iframe.contentDocument.body.appendChild(cssLink);
-        });
+        // this.getFormControl('text').valueChanges.subscribe((data) => {
+        //     let html = md.render(data);//markdown.toHTML(data, 'Maruku');
+        //     let iframe: any = $("#preview").get(0);
+        //     iframe.src = "javascript:'" + html + "'";
+        //     var cssLink = document.createElement("link");
+        //     cssLink.href = "../../../../assets/css/markdown.min.css";
+        //     cssLink.rel = "stylesheet";
+        //     cssLink.type = "text/css";
+        //     iframe.contentDocument.body.appendChild(cssLink);
+        // });
     }
     collapsed() {
         if (this.isCollapsed) {
