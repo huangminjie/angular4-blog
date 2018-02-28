@@ -19,7 +19,7 @@ export class PostComponent implements OnInit, OnChanges {
     isCollapsed: boolean = true;
     isFullscreen: boolean = false;
     options = [];
-    isVisible = false;
+    simplemde: SimpleMDE;
     constructor(private srv: PostService, private fb: FormBuilder, private msg: MessageService) { }
 
     ngOnInit() {
@@ -36,6 +36,7 @@ export class PostComponent implements OnInit, OnChanges {
                 this.msg.error(resp.type + resp.data);
             }
         });
+        this.simplemde = new SimpleMDE({ element: $("#markdown")[0] });
     }
     ngOnChanges(changes: SimpleChanges) {
         let current = changes.post.currentValue;
@@ -46,12 +47,9 @@ export class PostComponent implements OnInit, OnChanges {
                 type: [current.type, [Validators.required]],
                 digest: [current.digest, [Validators.nullValidator]],
                 tag: [current.tag, [Validators.nullValidator]],
-                text: ['', [Validators.required]]
+                text: [current.text, [Validators.required]]
             });
-            this.onFormTextChange();
-            this.postForm.patchValue({
-                text: current.text
-            });
+            this.simplemde.value(current.text);
         }
         else {
             this.postForm = this.fb.group({
@@ -61,24 +59,10 @@ export class PostComponent implements OnInit, OnChanges {
                 tag: ['', [Validators.nullValidator]],
                 text: ['', [Validators.required]]
             });
-            this.onFormTextChange();
         }
-        var simplemde = new SimpleMDE({ element: $("#markdown")[0] });
     }
     getFormControl(name) {
         return this.postForm.controls[name];
-    }
-    onFormTextChange() {
-        // this.getFormControl('text').valueChanges.subscribe((data) => {
-        //     let html = md.render(data);//markdown.toHTML(data, 'Maruku');
-        //     let iframe: any = $("#preview").get(0);
-        //     iframe.src = "javascript:'" + html + "'";
-        //     var cssLink = document.createElement("link");
-        //     cssLink.href = "../../../../assets/css/markdown.min.css";
-        //     cssLink.rel = "stylesheet";
-        //     cssLink.type = "text/css";
-        //     iframe.contentDocument.body.appendChild(cssLink);
-        // });
     }
     collapsed() {
         if (this.isCollapsed) {
@@ -137,6 +121,9 @@ export class PostComponent implements OnInit, OnChanges {
         }
     }
     submitForm() {
+        this.postForm.patchValue({
+            text: this.simplemde.value()
+        });
         if (this.post) {
             this.srv.updatePost(this.postForm.value).then((resp) => {
                 if (resp.ok) {
@@ -159,14 +146,5 @@ export class PostComponent implements OnInit, OnChanges {
                 }
             });
         }
-    }
-    info() {
-        this.isVisible = true;
-    }
-    handleCancel() {
-        this.isVisible = false;
-    }
-    handleOk() {
-
     }
 }

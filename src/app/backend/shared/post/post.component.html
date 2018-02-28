@@ -38,21 +38,8 @@
             <label for="text" nz-form-item-required>正文</label>
         </div>
         <div nz-form-control nz-col [nzMd]="22" [nzXs]="24">
-            <div id="textContent" class="main-content">
+            <div id="textContent" class="markdown-main-content">
                 <textarea id="markdown"></textarea>
-                <!-- <textarea style="flex: 1" class="ant-input" formControlName="text" id="text" rows="12"></textarea> -->
-                <!-- <div>
-                    <div>
-                        <i class="anticon trigger" [class.anticon-menu-fold]="isCollapsed" [class.anticon-menu-unfold]="!isCollapsed" (click)="collapsed()"></i>
-                    </div>
-                    <div>
-                        <i class="anticon trigger" [class.anticon-shrink]="isFullscreen" [class.anticon-arrows-alt]="!isFullscreen" (click)="fullscreen()"></i>
-                    </div>
-                    <div>
-                        <i class="anticon trigger anticon-info-circle" (click)="info()"></i>
-                    </div>
-                </div>
-                <iframe style="flex: 1;display: none" id="preview"></iframe> -->
             </div>
         </div>
     </div>
@@ -63,79 +50,3 @@
         </div>
     </div>
 </form>
-<nz-modal [nzVisible]="isVisible" [nzTitle]="'Markdown Guide'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)"
-    (nzOnOk)="handleOk($event)">
-    <ng-template #modalContent>
-        <div class="article__content color--texthead u-mbottombig" id="display--description">
-            <h2>Headers</h2>
-            <p>Headers are set using a hash before the title. The number of hashes before the title text will determine the
-                depth of the header. Header depths are from 1-6</p>
-            <ul>
-                <li>H1 :
-                    <code># Header 1</code>
-                </li>
-                <li>H2 :
-                    <code>## Header 2</code>
-                </li>
-                <li>H3 :
-                    <code>### Header 3</code>
-                </li>
-                <li>H4 :
-                    <code>#### Header 4</code>
-                </li>
-                <li>H5 :
-                    <code>##### Header 5</code>
-                </li>
-                <li>H6 :
-                    <code>###### Header 6</code>
-                </li>
-            </ul>
-            <h2>Text Styling</h2>
-            <ul>
-                <li>Links :
-                    <code>[Title](URL)</code>
-                </li>
-                <li>Bold :
-                    <code>**Bold**</code>
-                </li>
-                <li>Italicize :
-                    <code>*Italics*</code>
-                </li>
-                <li>Strike-through :
-                    <code>~~text~~</code>
-                </li>
-                <li>Highlight :
-                    <code>==text==</code>
-                </li>
-                <li>Paragraphs : Line space between paragraphs</li>
-                <li>Line break : Add two spaces to the end of the line</li>
-                <li>Lists :
-                    <code>* an asterisk for every new list item.</code>
-                </li>
-                <li>Quotes :
-                    <code>&gt; Quote</code>
-                </li>
-                <li>Inline Code :
-                    <code>`alert('Hello World');`</code>
-                </li>
-                <li>Horizontal Rule (HR) :
-                    <code>--------</code>
-                </li>
-            </ul>
-            <h2>Images</h2>
-            <p>
-                <strong>Adding Alt Text</strong>
-                <br> To add alt text to your image, all you need to do is place the text in-between the square brackets, e.g;
-                <code>![This is a alt text]()</code>.</p>
-            <p>
-                <strong>Hyperlinking Images</strong>
-                <br> To hyperlink your image, wrap the image markdown in the markdown for creating a link. E.g.
-                <code>[![Image Alt Text](/path/to/image)](path/to/linked/page)</code>
-            </p>
-            <h2>Lists</h2>
-            <h2>Links</h2>
-            <h2>Task Lists</h2>
-            <h2>Tables</h2>
-        </div>
-    </ng-template>
-</nz-modal>
