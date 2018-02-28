@@ -48,4 +48,7 @@ export class PostsMgMtComponent implements OnInit {
     this.isVisible = false;
     this.refreshData();
   }
+  audit(data) {
+
+  }
 }

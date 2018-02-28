@@ -32,9 +32,12 @@
       <td nz-td>{{ data.digest }}</td>
       <td nz-td>{{ data.tag }}</td>
       <td nz-td>{{ data.create_time }}</td>
-      <td nz-td>{{ data.status }}</td>
+      <td nz-td>{{ data.statusText }}</td>
       <td nz-td>
         <a (click)="edit(data)">Edit</a>
+        <a *ngIf="data.status === 0" style="margin: 0px 10px" (click)="audit(data)">Audit</a>
+        <a *ngIf="data.status === 1" style="margin: 0px 10px" (click)="revoke(data)">Revoke</a>
+        <a (click)="remove(data)">Remove</a>
       </td>
     </tr>
   </tbody>
