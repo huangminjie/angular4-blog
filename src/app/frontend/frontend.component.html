@@ -4,14 +4,14 @@
             <img src="../../assets/image/avatar.jpg" class="avatar" />
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-            <li *ngFor="let menu of menus" nz-menu-item style="font-size: 14px;">{{menu.name}}</li>
+            <li *ngFor="let menu of menus" nz-menu-item style="font-size: 14px;">{{menu}}</li>
+            <li nz-menu-item style="font-size: 14px;">归档</li>
+            <li nz-menu-item style="font-size: 14px;">关于</li>
         </ul>
     </nz-header>
     <nz-content class="content">
         <nz-breadcrumb style="margin:12px 0;">
-            <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-            <nz-breadcrumb-item>List</nz-breadcrumb-item>
-            <nz-breadcrumb-item>App</nz-breadcrumb-item>
+
         </nz-breadcrumb>
         <nz-layout class="content-layout">
             <nz-sider [nzWidth]="200" style="background:#fff" [hidden]="isCollapsed">
