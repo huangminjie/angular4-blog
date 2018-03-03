@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FrontendService } from './frontend.service';
+import { MessageService } from '../shared/message.service';
 
 @Component({
     selector: 'app-frontend',
@@ -11,7 +12,7 @@ import { FrontendService } from './frontend.service';
 export class FrontendComponent implements OnInit {
     isCollapsed = false;
     menus = [];
-    constructor(private srv: FrontendService) { }
+    constructor(private srv: FrontendService, private msg: MessageService) { }
 
     ngOnInit() {
         this.srv.getTypes().then((resp) => {
@@ -21,7 +22,7 @@ export class FrontendComponent implements OnInit {
                 });
             }
             else {
-
+                this.msg.error(resp.type + resp.data);
             }
         });
     }

@@ -4,7 +4,7 @@
             <img src="../../assets/image/avatar.jpg" class="avatar" />
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-            <li *ngFor="let menu of menus" nz-menu-item style="font-size: 14px;">{{menu}}</li>
+            <li *ngFor="let menu of menus;first as isFirst" nz-menu-item style="font-size: 14px;" [nzSelected]="isFirst">{{menu}}</li>
             <li nz-menu-item style="font-size: 14px;">归档</li>
             <li nz-menu-item style="font-size: 14px;">关于</li>
         </ul>
