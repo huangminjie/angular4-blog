@@ -9,4 +9,7 @@ export class FrontendService {
     getTypes() {
         return this.http.get<ResponseModel>('/types').toPromise();
     }
+    getPosts(type?, isRecent?) {
+        return this.http.get<ResponseModel>(`/posts?type=${type}&status=1&isRecent=${isRecent}`).toPromise();
+    }
 }

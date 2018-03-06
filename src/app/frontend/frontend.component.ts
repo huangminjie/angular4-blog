@@ -12,18 +12,36 @@ import { MessageService } from '../shared/message.service';
 export class FrontendComponent implements OnInit {
     isCollapsed = false;
     menus = [];
+    postsList = [];
     constructor(private srv: FrontendService, private msg: MessageService) { }
 
     ngOnInit() {
-        this.srv.getTypes().then((resp) => {
-            if (resp.ok) {
-                this.menus = resp.data.map((item) => {
-                    return item.name;
-                });
-            }
-            else {
-                this.msg.error(resp.type + resp.data);
-            }
-        });
+        this.srv.getTypes()
+            .then((resp) => {
+                if (resp.ok) {
+                    this.menus = resp.data.map((item) => {
+                        return item.name;
+                    });
+                    if (Array.isArray(resp.data) && resp.data.length > 0) {
+                        return this.srv.getPosts(resp.data[0].id);
+                    }
+                    else {
+                        throw "文章数据为空!";
+                    }
+                }
+                else {
+                    throw resp.type + resp.data;
+                }
+            }).then((resp) => {
+                if (resp.ok) {
+                    this.postsList = resp.data;
+                }
+                else {
+                    throw resp.type + resp.data;
+                }
+            })
+            .catch((err) => {
+                this.msg.error(err);
+            });
     }
 }

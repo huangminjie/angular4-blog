@@ -1,6 +1,13 @@
-<div style="text-align:center">
-  <h2>
-    Home
-  </h2>
-
+<div>
+  <div class="panel">
+    <div class="panel-heading">最新文章</div>
+    <ul>
+      <a>
+        <li *ngFor="let item of recentPostsList">
+          {{item.title}}
+          <nz-tag [nzColor]="'blue'" style="float: right">{{item.create_time}}</nz-tag>
+        </li>
+      </a>
+    </ul>
+  </div>
 </div>
