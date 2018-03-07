@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FrontendService } from './frontend.service';
 import { MessageService } from '../shared/message.service';
 
@@ -13,7 +14,7 @@ export class FrontendComponent implements OnInit {
     isCollapsed = false;
     menus = [];
     postsList = [];
-    constructor(private srv: FrontendService, private msg: MessageService) { }
+    constructor(private srv: FrontendService, private msg: MessageService, private router: Router) { }
 
     ngOnInit() {
         this.srv.getTypes()
@@ -43,5 +44,8 @@ export class FrontendComponent implements OnInit {
             .catch((err) => {
                 this.msg.error(err);
             });
+    }
+    navigate(id) {
+        this.router.navigate(['/frontend/post', id]);
     }
 }

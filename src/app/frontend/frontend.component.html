@@ -15,13 +15,17 @@
         <nz-layout class="content-layout">
             <nz-sider [nzWidth]="200" style="background:#fff" [hidden]="isCollapsed">
                 <ul nz-menu [nzMode]="'inline'" class="content-sider">
-                    <li nz-menu-item *ngFor="let item of postsList">
-                        {{item.title}}
-                    </li>
+                    <a *ngFor="let item of postsList" (click)="navigate(item.id)">
+                        <li nz-menu-item>
+                            {{item.title}}
+                        </li>
+                    </a>
                 </ul>
             </nz-sider>
             <nz-content class="content-main">
-                <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+                <div style="text-align:right">
+                    <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+                </div>
                 <router-outlet></router-outlet>
             </nz-content>
         </nz-layout>

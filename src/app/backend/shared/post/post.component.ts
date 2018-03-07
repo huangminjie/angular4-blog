@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { markdown } from 'markdown';
 import { PostService } from './post.service';
 import { MessageService } from '../../../shared/message.service';
 import { Post } from './post.model';
@@ -47,9 +46,20 @@ export class PostComponent implements OnInit, OnChanges {
                 type: [current.type, [Validators.required]],
                 digest: [current.digest, [Validators.nullValidator]],
                 tag: [current.tag, [Validators.nullValidator]],
-                text: [current.text, [Validators.required]]
+                text: ['', [Validators.required]]
             });
-            this.simplemde.value(current.text);
+            this.srv.getPostText(current.id).then((resp) => {
+                if (resp.ok) {
+                    this.postForm.patchValue({
+                        text: resp.data
+                    });
+                    this.simplemde.value(resp.data);
+                }
+                else {
+                    this.simplemde.value('');
+                    this.msg.error(resp.data);
+                }
+            });
         }
         else {
             this.postForm = this.fb.group({

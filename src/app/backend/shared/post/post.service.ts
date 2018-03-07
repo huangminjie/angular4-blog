@@ -23,4 +23,7 @@ export class PostService {
             text: post.text
         })).toPromise();
     }
+    getPostText(id) {
+        return this.http.get<ResponseModel>(`/posts/${id}/text`).toPromise();
+    }
 }

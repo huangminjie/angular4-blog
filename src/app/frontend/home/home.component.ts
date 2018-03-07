@@ -22,4 +22,7 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  navigate(id) {
+    this.router.navigate(['/frontend/post', id]);
+  }
 }
