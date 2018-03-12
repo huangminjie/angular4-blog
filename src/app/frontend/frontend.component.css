@@ -28,6 +28,14 @@
     padding: 0 24px; 
     min-height: 280px;
 }
+.content-sider a{
+    font-weight: 300;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.content-sider a li{
+    font-size: 14px;
+}
 .footer{
     text-align: center;
 }
@@ -36,8 +44,11 @@
     padding: 0 16px;
     cursor: pointer;
     transition: color .3s;
-  }
+}
 
-  :host ::ng-deep .trigger:hover {
-    color: #108ee9;
-  }
+:host ::ng-deep .trigger:hover {
+color: #108ee9;
+}
+
+
+

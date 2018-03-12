@@ -1,10 +1,10 @@
 <nz-layout class="layout">
     <nz-header>
         <div class="logo">
-            <img src="../../assets/image/avatar.jpg" class="avatar" />
+            <img src="../../assets/image/avatar.jpg" class="avatar" (click)="goToHome()" />
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-            <li *ngFor="let menu of menus;first as isFirst" nz-menu-item style="font-size: 14px;" [nzSelected]="isFirst">{{menu}}</li>
+            <li *ngFor="let type of types;" nz-menu-item style="font-size: 14px;" [nzSelected]="type.id === currentTypeID" (click)="changeMenu(type.id)">{{type.name}}</li>
             <li nz-menu-item style="font-size: 14px;">归档</li>
             <li nz-menu-item style="font-size: 14px;">关于</li>
         </ul>
@@ -15,9 +15,9 @@
         <nz-layout class="content-layout">
             <nz-sider [nzWidth]="200" style="background:#fff" [hidden]="isCollapsed">
                 <ul nz-menu [nzMode]="'inline'" class="content-sider">
-                    <a *ngFor="let item of postsList" (click)="navigate(item.id)">
-                        <li nz-menu-item>
-                            {{item.title}}
+                    <a *ngFor="let item of postsList;" (click)="navigate(item.id)">
+                        <li nz-menu-item [nzSelected]="item.id === currentPostID" title="{{item.title}}">
+                            {{item.title}}({{item.id === currentPostID}})
                         </li>
                     </a>
                 </ul>

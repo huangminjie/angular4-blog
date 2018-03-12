@@ -48,7 +48,28 @@ export class PostsMgMtComponent implements OnInit {
     this.isVisible = false;
     this.refreshData();
   }
-  audit(data) {
-
+  auditOrRevoke(data) {
+    let status = 0;
+    if (data.status === 0) {
+      status = 1;
+    }
+    this.srv.updatePostAuditState(data.id, status).then((resp) => {
+      if (resp.ok) {
+        this.refreshData();
+      }
+      else {
+        this.msg.error(resp.type + resp.data);
+      }
+    });
+  }
+  remove(data) {
+    this.srv.remove(data.id).then((resp) => {
+      if (resp.ok) {
+        this.refreshData();
+      }
+      else {
+        this.msg.error(resp.type + resp.data);
+      }
+    });
   }
 }

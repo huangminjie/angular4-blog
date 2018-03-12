@@ -10,4 +10,10 @@ export class PostsMgMtService {
     getPosts(pager) {
         return this.http.get<ResponseModel>('/posts');
     }
+    updatePostAuditState(id, status) {
+        return this.http.patch<ResponseModel>(`/posts/${id}/updatePostAuditState`, JSON.stringify({ status: status })).toPromise();
+    }
+    remove(id) {
+        return this.http.delete<ResponseModel>(`/posts/${id}`).toPromise();
+    }
 }

@@ -35,7 +35,6 @@ export class PostComponent implements OnInit, OnChanges {
                 this.msg.error(resp.type + resp.data);
             }
         });
-        this.simplemde = new SimpleMDE({ element: $("#markdown")[0] });
     }
     ngOnChanges(changes: SimpleChanges) {
         let current = changes.post.currentValue;
@@ -70,6 +69,12 @@ export class PostComponent implements OnInit, OnChanges {
                 text: ['', [Validators.required]]
             });
         }
+        this.simplemde = new SimpleMDE({ element: $("#markdown")[0] });
+        this.simplemde.codemirror.on("change", () => {
+            this.postForm.patchValue({
+                text: this.simplemde.value()
+            });
+        });
     }
     getFormControl(name) {
         return this.postForm.controls[name];
@@ -149,6 +154,7 @@ export class PostComponent implements OnInit, OnChanges {
             this.srv.addPost(this.postForm.value).then((resp) => {
                 if (resp.ok) {
                     this.msg.success(resp.data);
+                    this.simplemde.value('');
                     this.resetForm();
                 }
                 else {
