@@ -27,6 +27,8 @@
 .content-main{
     padding: 0 24px; 
     min-height: 280px;
+    height: 100%;
+    overflow: auto;
 }
 .content-sider a{
     font-weight: 300;
@@ -47,8 +49,7 @@
 }
 
 :host ::ng-deep .trigger:hover {
-color: #108ee9;
+    color: #108ee9;
 }
-
 
 

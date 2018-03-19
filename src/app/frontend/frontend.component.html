@@ -16,17 +16,22 @@
             <nz-sider [nzWidth]="200" style="background:#fff" [hidden]="isCollapsed">
                 <ul nz-menu [nzMode]="'inline'" class="content-sider">
                     <a *ngFor="let item of postsList;" (click)="navigate(item.id)">
-                        <li nz-menu-item [nzSelected]="item.id === currentPostID" title="{{item.title}}">
-                            {{item.title}}({{item.id === currentPostID}})
+                        <li nz-menu-item [nzSelected]="item.id === currentPostID">
+                            <nz-tooltip [nzTitle]="item.title" [nzMouseEnterDelay]="1">
+                                <span nz-tooltip>{{item.title}}</span>
+                            </nz-tooltip>
                         </li>
                     </a>
                 </ul>
             </nz-sider>
-            <nz-content class="content-main">
-                <div style="text-align:right">
-                    <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+            <nz-content>
+                <div class="content-main" #divTarget>
+                    <div style="text-align:right">
+                        <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+                    </div>
+                    <router-outlet></router-outlet>
+                    <nz-back-top [nzTarget]="divTarget"></nz-back-top>
                 </div>
-                <router-outlet></router-outlet>
             </nz-content>
         </nz-layout>
     </nz-content>
