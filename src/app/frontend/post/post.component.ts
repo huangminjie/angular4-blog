@@ -20,12 +20,13 @@ export class PostComponent implements OnInit {
       return this.srv.getPostText(id);
     }).subscribe((resp) => {
       if (resp.ok) {
-        $(".markdown-main-content").html(marked(resp.data));
+        $(".markdown-main-content").html(marked(resp.data, { gfm: true })
+          .replace(/(<li>)\[ \](\s)/g, '$1<input type="checkbox" disabled/>$2')
+          .replace(/(<li>)\[x\](\s)/g, '$1<input type="checkbox" checked="checked" disabled/>$2'));
       }
       else {
         this.msg.error(resp.type + resp.data);
       }
     })
   }
-
 }
