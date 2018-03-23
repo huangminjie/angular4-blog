@@ -5,7 +5,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { SharedModule } from '../shared';
 import { FrontendComponent } from './frontend.component';
 import { HomeComponent } from './home';
-import { PostComponent } from './post';
+import { PostComponent, CommentPostComponent } from './post';
 import { FrontendRoutingModule } from './frontend.routing.module';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { FrontendRoutingModule } from './frontend.routing.module';
     declarations: [
         FrontendComponent,
         HomeComponent,
-        PostComponent
+        PostComponent,
+        CommentPostComponent
     ],
     providers: [],
 })
